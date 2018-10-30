@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');
+
+html, body {
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  color: #FFF;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#app-display {
+  background-image: url(assets/img/stars-background.svg), linear-gradient(#21132C, #170F1F);
+  height:100%;
+}
+
+h1 {
+  font-family:"Luckiest Guy", sans-serif;
+  color:white;
+  text-transform: uppercase;
+  font-size:88px;
+  text-align: center;
+  display: inline-block;
+  margin: 96px auto 0px auto;
+}
+
+.description {
+  font-family:"Open Sans", sans-serif;
+  color:white;
+  font-weight:400;
+  text-align: center;
+  line-height:36px;
+  margin:8px auto 0px auto;
+  width:730px;
+  font-size:24px;
+}
+
+.main-button {
+  color:white;
+  font-family: "Luckiest Guy", sans-serif;
+  font-size:40px;
+  text-transform: uppercase;
+  padding:24px 72px 9px 72px; // add 15 px to top
+  margin:294px 0px 0px 0px;
+  background-color:#522875;
+  border: none;
+  border-radius: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  height:100%;
+  width:100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin:0;
+  padding:0;
+}
