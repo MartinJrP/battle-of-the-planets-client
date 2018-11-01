@@ -6,7 +6,7 @@
 
             <h2>Game Code</h2>
 
-            <p class="game-code">j3k4lh</p>
+            <p class="game-code">{{ code }}</p>
 
             <div class="players-container">
                 <div class="player-1">
@@ -74,9 +74,6 @@
 
             <button class="main-button">Generate Teams</button>
 
-            
-
-            
 
         </div>
     </div>
@@ -85,7 +82,18 @@
 
 <script>
 export default {
-    name: 'TheGameSession'
+    name: 'TheGameSession',
+    data: function () {
+        return {
+            code: ''
+        }
+    },
+    mounted: function () {
+        const vm = this
+        this.$socket.emit('create-session', '', function(code) {
+            vm.code = code
+        })
+    }
     
 }
 </script>
