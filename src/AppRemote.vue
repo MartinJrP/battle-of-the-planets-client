@@ -1,21 +1,11 @@
 <template>
   <div id="app">
+    <the-mobile-home-screen
+      v-if="state == 'welcome'"
+      v-on:code-accepted="joinGame"></the-mobile-home-screen>
 
-    <div class="container">
-
-      <h1>Battle<br>of the<br>Planets</h1>
-
-      <form>
-        
-        <input class="text-input" placeholder="Game Code">
-
-        <button class="mobile-main-button">Continue</button>
-
-      </form>
-
-    </div>
-    
-    
+    <the-enter-name-screen
+    v-if="state == 'joined-game'"></the-enter-name-screen>
 
   </div>
 </template>
@@ -23,8 +13,22 @@
 <script lang="ts">
 import Vue from 'vue';
 
+import TheMobileHomeScreen from './components/TheMobileHomeScreen.vue';
+import TheEnterNameScreen from './components/TheEnterNameScreen.vue';
+
 export default Vue.extend({
-  name: 'AppRemote'
+  name: 'AppRemote',
+  components: { TheMobileHomeScreen, TheEnterNameScreen },
+  data: function () {
+    return {
+      state: 'welcome'
+    }
+  },
+  methods: {
+    joinGame: function() {
+      this.state = 'joined-game';
+    }
+  }
 });
 </script>
 
