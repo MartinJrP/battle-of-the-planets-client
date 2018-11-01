@@ -9,66 +9,78 @@
             <p class="game-code">{{ code }}</p>
 
             <div class="players-container">
-                <div class="player-1">
+                <div class="player-1" 
+                v-if="playerNames[0]">
                     <img src="../assets/img/Saturn.svg" class="saturn-avatar">
                     
-                    <p class="player-name">Jessica</p>
+                    <p class="player-name">{{ playerNames[0] }}</p>
                 </div>
-                <div class="player-2">
+                <div class="player-2"
+                v-if="playerNames[1]">
                     <img src="../assets/img/Sun.svg" class="sun-avatar">
                     
-                    <p class="player-name">Andrew</p>
+                    <p class="player-name">{{ playerNames[1] }}</p>
                 </div>
-                <div class="player-3">
+                <div class="player-3"
+                v-if="playerNames[2]">
                     <img src="../assets/img/Asteroid.svg" class="asteroid-avatar">
                     
-                    <p class="player-name">Richard</p>
+                    <p class="player-name">{{ playerNames[2] }}</p>
                 </div>
-                <div class="player-4">
+                <div class="player-4"
+                v-if="playerNames[3]">
                     <img src="../assets/img/Mercury.svg" class="mercury-avatar">
                     
-                    <p class="player-name">Veronica</p>
+                    <p class="player-name">{{ playerNames[3] }}</p>
                 </div>
-                <div class="player-5">
+                <div class="player-5"
+                v-if="playerNames[4]">
                     <img src="../assets/img/Venus.svg" class="venus-avatar">
                     
-                    <p class="player-name">Alyssa</p>
+                    <p class="player-name">{{ playerNames[4] }}</p>
                 </div>
-                <div class="player-6">
+                <div class="player-6"
+                v-if="playerNames[5]">
                     <img src="../assets/img/Pluto.svg" class="pluto-avatar">
                     
-                    <p class="player-name">John</p>
+                    <p class="player-name">{{ playerNames[5] }}</p>
                 </div>
 
-                <div class="player-7">
+                <div class="player-7"
+                v-if="playerNames[6]">
                     <img src="../assets/img/Uranus.svg" class="uranus-avatar">
                     
-                    <p class="player-name">Jessica</p>
+                    <p class="player-name">{{ playerNames[6] }}</p>
                 </div>
-                <div class="player-8">
+                <div class="player-8"
+                v-if="playerNames[7]">
                     <img src="../assets/img/Neptune.svg" class="neptune-avatar">
                     
-                    <p class="player-name">Andrew</p>
+                    <p class="player-name">{{ playerNames[7] }}</p>
                 </div>
-                <div class="player-9">
+                <div class="player-9"
+                v-if="playerNames[8]">
                     <img src="../assets/img/Jupiter.svg" class="jupiter-avatar">
                     
-                    <p class="player-name">Richard</p>
+                    <p class="player-name">{{ playerNames[8] }}</p>
                 </div>
-                <div class="player-10">
+                <div class="player-10"
+                v-if="playerNames[9]">
                     <img src="../assets/img/Earth.svg" class="earth-avatar">
                     
-                    <p class="player-name">Veronica</p>
+                    <p class="player-name">{{ playerNames[9] }}</p>
                 </div>
-                <div class="player-11">
+                <div class="player-11"
+                v-if="playerNames[10]">
                     <img src="../assets/img/Mars.svg" class="mars-avatar">
                     
-                    <p class="player-name">Alyssa</p>
+                    <p class="player-name">{{ playerNames[10] }}</p>
                 </div>
-                <div class="player-12">
+                <div class="player-12"
+                v-if="playerNames[11]">
                     <img src="../assets/img/Moon.svg" class="moon-avatar">
                     
-                    <p class="player-name">John</p>
+                    <p class="player-name">{{ playerNames[11] }}</p>
                 </div>
             </div>
 
@@ -83,16 +95,23 @@
 <script>
 export default {
     name: 'TheGameSession',
+    sockets: {
+        playerAdded: function(playerName){
+            this.playerNames.push(playerName);
+        }
+    },
     data: function () {
         return {
-            code: ''
+            code: '',
+            playerNames = []
         }
     },
     mounted: function () {
         const vm = this
         this.$socket.emit('create-session', '', function(code) {
             vm.code = code
-        })
+        });
+
     }
     
 }
