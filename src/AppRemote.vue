@@ -25,8 +25,17 @@ export default Vue.extend({
     }
   },
   methods: {
-    joinGame: function() {
-      this.state = 'joined-game';
+    joinGame: function(sessionId: string) {
+      const vm = this as any
+
+      vm.$socket.emit('join-session', sessionId, function (res: any) {
+          if (res.error) {
+              alert(res.error)
+          } else {
+              vm.state = 'joined-game';
+              alert('Joined Game. You\'re: ' + res.username)
+          }
+      })
     }
   }
 });

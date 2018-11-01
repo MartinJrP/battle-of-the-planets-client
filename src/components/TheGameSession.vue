@@ -96,14 +96,14 @@
 export default {
     name: 'TheGameSession',
     sockets: {
-        playerAdded: function(playerName){
+        ['player-added']: function(playerName){
             this.playerNames.push(playerName);
         }
     },
     data: function () {
         return {
             code: '',
-            playerNames = []
+            playerNames: []
         }
     },
     mounted: function () {
