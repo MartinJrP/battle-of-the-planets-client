@@ -28,5 +28,8 @@ module.exports = {
       // extracted common chunks and vendor chunks.
       //chunks: ['chunk-vendors', 'chunk-common', 'index']
     }
-  }
+  },
+  baseUrl: process.env.NODE_ENV === 'production'
+    ? ''
+    : 'localhost:8080/'
 }

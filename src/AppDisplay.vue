@@ -14,8 +14,8 @@
 <script lang="ts">
 import Vue from 'vue';
 
-import TheHomeScreen from './components/TheHomeScreen.vue';
-import TheGameSession from './components/TheGameSession.vue';
+import TheHomeScreen from './components/display/TheHomeScreen.vue';
+import TheGameSession from './components/display/TheGameSession.vue';
 
 export default Vue.extend({
   name: 'app-display',

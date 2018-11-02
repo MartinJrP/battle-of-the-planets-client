@@ -13,8 +13,8 @@
 <script lang="ts">
 import Vue from 'vue';
 
-import TheMobileHomeScreen from './components/TheMobileHomeScreen.vue';
-import TheEnterNameScreen from './components/TheEnterNameScreen.vue';
+import TheMobileHomeScreen from './components/remote/TheMobileHomeScreen.vue';
+import TheEnterNameScreen from './components/remote/TheEnterNameScreen.vue';
 
 export default Vue.extend({
   name: 'AppRemote',
