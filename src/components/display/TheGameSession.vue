@@ -18,7 +18,8 @@
                 />
             </div>
 
-            <button class="main-button">Generate Teams</button>
+            <button class="main-button"
+            v-on:click="emitGenerateTeamsEvent">Generate Teams</button>
 
         </div>
     </div>
@@ -33,8 +34,13 @@ export default {
     name: 'TheGameSession',
     components: { PlayerCard },
     sockets: {
-        playerAdded: function(playerName){
-            this.playerNames.push(playerName);
+        playerAdded: function(player){
+            this.players.push(player);
+        }
+    },
+    methods: {
+        emitGenerateTeamsEvent: function () {
+            this.$emit("generate-teams");
         }
     },
     data: function () {

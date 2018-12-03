@@ -1,0 +1,98 @@
+<template>
+    <div id="the-generated-teams-screen">
+        <div class="generated-teams-container">
+
+            <h1 class="mainTitle-small">Battle of the Planets</h1>
+
+            <table>
+                <tr>
+                    <th>Round</th>
+                    <th colspan="2">Team #1</th>
+                    <th></th>
+                    <th colspan="2">Team #2</th>
+                </tr>
+
+                <tr>
+                    <td class="round-number">1</td>
+                    <td colspan="2"><img
+                        v-bind:src="path" 
+                        alt="Planet Avatar" 
+                        class="table-planet-avatar">Alexander</td>
+                    <td class="vs-text">VS</td>
+                    <td colspan="2"><img
+                        v-bind:src="path" 
+                        alt="Planet Avatar" 
+                        class="table-planet-avatar">Jess</td>
+                </tr>
+
+            </table>
+
+            <button class="main-button start-first-round">Start Game</button>
+
+        </div>
+    </div>
+</template>
+
+<script>
+
+import PlayerTableCell from './PlayerTableCell.vue';
+
+export default {
+    name: 'TheGeneratedTeamsScreen',
+    components: { PlayerTableCell },
+    computed: {
+    baseUrl: function () {
+        return process.env.BASE_URL
+    },
+    path: function () {
+        var path = `${this.baseUrl}img/planet-1.png`
+        return path
+    }
+}
+}
+</script>
+
+<style lang="scss">
+
+.generated-teams-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    height:100%;
+    width:100%;
+    margin:0;
+    padding:0;
+}
+
+.mainTitle-small {
+    font-size:56px;
+    margin-top:80px;
+}
+
+table { 
+    text-align: center;
+    border-collapse: collapse;
+    width:837px;
+    margin:16px 0px 0px 0px;
+}
+
+td, th {
+    border-bottom: 1px solid #4F2770;
+    vertical-align: middle;
+}
+
+th {
+    font-family: "Poppins", sans-serif;
+    font-size:20px;
+    font-weight: 600;
+    padding:8px 0px;
+    vertical-align: middle;
+}
+
+.start-first-round {
+    margin-top:32px;
+}
+
+</style>

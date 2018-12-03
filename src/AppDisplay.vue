@@ -6,7 +6,12 @@
       v-on:start-game = "startGame"/>
 
     <the-game-session
-      v-if="state == 'session-started'"/>
+      v-if="state == 'session-started'"
+      v-on:generate-teams = "generateTeams"/>
+
+    <the-generated-teams-screen 
+      v-if="state == 'teams-generated'"/>
+
 
   </div>
 </template>
@@ -16,10 +21,11 @@ import Vue from 'vue';
 
 import TheHomeScreen from './components/display/TheHomeScreen.vue';
 import TheGameSession from './components/display/TheGameSession.vue';
+import TheGeneratedTeamsScreen from './components/display/TheGeneratedTeamsScreen.vue';
 
 export default Vue.extend({
   name: 'app-display',
-  components: { TheHomeScreen, TheGameSession },
+  components: { TheHomeScreen, TheGameSession, TheGeneratedTeamsScreen },
   data: function () {
     return {
       state: 'welcome'
@@ -28,6 +34,9 @@ export default Vue.extend({
   methods: {
     startGame: function() {
       this.state = 'session-started';
+    },
+    generateTeams: function(){
+      this.state = 'teams-generated';
     }
   }
 });
