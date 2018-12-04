@@ -34,7 +34,7 @@ export default {
     name: 'TheGameSession',
     components: { PlayerCard },
     sockets: {
-        playerAdded: function(player){
+        ['player-added']: function(player){
             this.players.push(player);
         }
     },
