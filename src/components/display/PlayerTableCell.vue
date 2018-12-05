@@ -1,20 +1,18 @@
 <template>
 
     <!-- COME BACK TO THIS -->
-    <div id="player-table-cell">
-        <tr>
-            <td class="round-number">1</td>
-            <td colspan="2"><img
-                v-bind:src="path" 
-                alt="Planet Avatar" 
-                class="table-planet-avatar">Alexander</td>
-            <td class="vs-text">VS</td>
-            <td colspan="2"><img
-                v-bind:src="path" 
-                alt="Planet Avatar" 
-                class="table-planet-avatar">Jess</td>
-        </tr>
-    </div>
+    <tr id="player-table-cell">
+        <td class="round-number">1</td>
+        <td colspan="2"><img
+            v-bind:src="path" 
+            alt="Planet Avatar" 
+            class="table-planet-avatar">Alexander</td>
+        <td class="vs-text">VS</td>
+        <td colspan="2"><img
+            v-bind:src="path" 
+            alt="Planet Avatar" 
+            class="table-planet-avatar">Jess</td>
+    </tr>
     
 </template>
 

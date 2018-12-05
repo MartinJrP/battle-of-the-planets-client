@@ -16,6 +16,7 @@
                     v-bind:key="player.num"
                     v-bind:player="player"
                 />
+                
             </div>
 
             <button class="main-button"

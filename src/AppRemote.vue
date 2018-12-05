@@ -85,6 +85,16 @@ html, body {
   margin:64px 0px 0px 0px;
 }
 
+.container p {
+    font-family:"Open Sans", sans-serif;
+    font-size:16px;
+    line-height:24px;
+    width:288px;
+    margin: 0 auto;
+    text-align: center;
+    margin:8px 0px 0px 0px;
+}
+
 form {
   display:flex;
   align-items: center;
@@ -101,11 +111,11 @@ form {
   color:white;
   padding:16px 0px 5px 0px;
   width:272px;
-  margin:50px auto 0px auto;
+  margin:40px auto 0px auto;
 }
 
 form button {
-  margin-top:50px;
+  margin-top:40px;
 }
 
 </style>

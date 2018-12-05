@@ -5,7 +5,7 @@
 
             <h1>Battle of the Planets</h1>
 
-            <p class="description">Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu. Natoque leo penatibus et leo magnis dis parturient montes.</p>
+            <p class="description">Team up with your classmates and test your knowledge as you face head to head to see who is the superior planet of the galaxy.</p>
 
             <button class="main-button start-game-button" v-on:click="emitStartGameEvent">Start Game</button>
 
@@ -27,7 +27,10 @@ export default {
 
 <style lang="scss">
 #the-home-screen {
-
+    background-image: url("~@/assets/img/planets-home-bg.svg");
+    background-size:90%;
+    background-repeat: no-repeat;
+    background-position: center bottom;
 }
 
 .description {
