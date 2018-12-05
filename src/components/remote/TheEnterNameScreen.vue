@@ -6,9 +6,9 @@
 
             <p>Team up with your classmates and challenge one another to see who is the superior planet in the galaxy</p>
 
-            <form v-on:submit.prevent>
+            <form v-on:submit.prevent="emitUsername">
                 
-                <input class="text-input" placeholder="First Name">
+                <input class="text-input" placeholder="First Name" v-model="username">
 
                 <button class="mobile-main-button">Join Game</button>
 
@@ -20,7 +20,18 @@
 
 <script>
 export default {
-    name: 'TheEnterNameScreen'
+    name: 'TheEnterNameScreen',
+    data: function () {
+        return {
+            username: ''
+        }
+    },
+    methods: {
+        emitUsername: function () {
+            console.log("submitted")
+            this.$emit('update-username', this.username)
+        }
+    }
 }
 </script>
 

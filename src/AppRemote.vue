@@ -5,6 +5,7 @@
       v-on:code-accepted="joinGame"></the-mobile-home-screen>
 
     <the-enter-name-screen
+    v-on:update-username="updateUsername"
     v-if="state == 'joined-game'"></the-enter-name-screen>
 
   </div>
@@ -21,21 +22,35 @@ export default Vue.extend({
   components: { TheMobileHomeScreen, TheEnterNameScreen },
   data: function () {
     return {
-      state: 'welcome'
+      state: 'welcome',
+      sessionId: '',
+
+      // The current player
+      player: {} as any
     }
   },
   methods: {
     joinGame: function(sessionId: string) {
       const vm = this as any
 
-      vm.$socket.emit('join-session', sessionId, function (res: any) {
-          if (res.error) {
-              alert(res.error)
+      vm.$socket.emit('join-session', sessionId, function (player: any) {
+          if (player.error) {
+              alert(player.error)
           } else {
               vm.state = 'joined-game';
-              alert('Joined Game. You\'re: ' + res.username)
+              vm.player = player
+              vm.sessionId = sessionId
+              alert('Joined Game. You\'re: ' + player.username)
           }
       })
+    },
+    updateUsername: function (username: string) {
+      const data = {
+         newUsername: username, 
+         num: this.player.num, 
+         sessionId: this.sessionId
+      }
+      this.$socket.emit('update-username', data)
     }
   }
 });
