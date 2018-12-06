@@ -13,6 +13,8 @@
       v-bind:player="player"
       v-if="state == 'connection-confirmed'"></the-connection-confirmed-screen>
 
+    <!-- <the-player-round-info-screen></the-player-round-info-screen> -->
+
   </div>
 </template>
 
@@ -22,10 +24,11 @@ import Vue from 'vue';
 import TheMobileHomeScreen from './components/remote/TheMobileHomeScreen.vue';
 import TheEnterNameScreen from './components/remote/TheEnterNameScreen.vue';
 import TheConnectionConfirmedScreen from './components/remote/TheConnectionConfirmedScreen.vue';
+import ThePlayerRoundInfoScreen from './components/remote/ThePlayerRoundInfoScreen.vue';
 
 export default Vue.extend({
   name: 'AppRemote',
-  components: { TheMobileHomeScreen, TheEnterNameScreen, TheConnectionConfirmedScreen },
+  components: { TheMobileHomeScreen, TheEnterNameScreen, TheConnectionConfirmedScreen, ThePlayerRoundInfoScreen },
   data: function () {
     return {
       state: 'welcome',

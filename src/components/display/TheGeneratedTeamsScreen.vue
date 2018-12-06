@@ -12,18 +12,6 @@
                     <th colspan="2">Team #2</th>
                 </tr>
 
-                <!-- <tr>
-                    <td class="round-number">1</td>
-                    <td colspan="2"><img
-                        v-bind:src="path" 
-                        alt="Planet Avatar" 
-                        class="table-planet-avatar">Alexander</td>
-                    <td class="vs-text">VS</td>
-                    <td colspan="2"><img
-                        v-bind:src="path" 
-                        alt="Planet Avatar" 
-                        class="table-planet-avatar">Jess</td>
-                </tr> -->
                 <player-table-cell
                     v-for="(round, index) in rounds"
                     :key="index"
