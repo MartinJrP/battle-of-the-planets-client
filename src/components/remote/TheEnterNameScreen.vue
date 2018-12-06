@@ -6,7 +6,8 @@
 
             <p>Team up with your classmates and challenge one another to see who is the superior planet in the galaxy</p>
 
-            <form v-on:submit.prevent="emitUsername">
+            <form 
+            v-on:submit.prevent="emitUsername">
                 
                 <input class="text-input" placeholder="First Name" v-model="username">
 
@@ -30,6 +31,7 @@ export default {
         emitUsername: function () {
             console.log("submitted")
             this.$emit('update-username', this.username)
+            this.$emit('connection-confirmed');
         }
     }
 }

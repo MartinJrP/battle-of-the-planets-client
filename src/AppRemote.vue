@@ -5,8 +5,15 @@
       v-on:code-accepted="joinGame"></the-mobile-home-screen>
 
     <the-enter-name-screen
-    v-on:update-username="updateUsername"
-    v-if="state == 'joined-game'"></the-enter-name-screen>
+      v-on:update-username="updateUsername"
+      v-on:connection-confirmed="connectionConfirmed"
+      v-if="state == 'joined-game'"></the-enter-name-screen>
+
+    <the-connection-confirmed-screen
+      v-bind:player="player"
+      v-if="state == 'connection-confirmed'"></the-connection-confirmed-screen>
+
+    <!-- <the-player-round-info-screen></the-player-round-info-screen> -->
 
   </div>
 </template>
@@ -16,10 +23,12 @@ import Vue from 'vue';
 
 import TheMobileHomeScreen from './components/remote/TheMobileHomeScreen.vue';
 import TheEnterNameScreen from './components/remote/TheEnterNameScreen.vue';
+import TheConnectionConfirmedScreen from './components/remote/TheConnectionConfirmedScreen.vue';
+import ThePlayerRoundInfoScreen from './components/remote/ThePlayerRoundInfoScreen.vue';
 
 export default Vue.extend({
   name: 'AppRemote',
-  components: { TheMobileHomeScreen, TheEnterNameScreen },
+  components: { TheMobileHomeScreen, TheEnterNameScreen, TheConnectionConfirmedScreen, ThePlayerRoundInfoScreen },
   data: function () {
     return {
       state: 'welcome',
@@ -51,6 +60,10 @@ export default Vue.extend({
          sessionId: this.sessionId
       }
       this.$socket.emit('update-username', data)
+      this.player.username = username
+    },
+    connectionConfirmed: function(){
+      this.state = 'connection-confirmed';
     }
   }
 });
