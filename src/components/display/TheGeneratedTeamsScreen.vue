@@ -12,7 +12,7 @@
                     <th colspan="2">Team #2</th>
                 </tr>
 
-                <tr>
+                <!-- <tr>
                     <td class="round-number">1</td>
                     <td colspan="2"><img
                         v-bind:src="path" 
@@ -23,7 +23,13 @@
                         v-bind:src="path" 
                         alt="Planet Avatar" 
                         class="table-planet-avatar">Jess</td>
-                </tr>
+                </tr> -->
+                <player-table-cell
+                    v-for="(round, index) in rounds"
+                    :key="index"
+                    :round="round"
+                    :number="index + 1"
+                />
 
             </table>
 
@@ -40,6 +46,7 @@ import PlayerTableCell from './PlayerTableCell.vue';
 export default {
     name: 'TheGeneratedTeamsScreen',
     components: { PlayerTableCell },
+    props: ['rounds'],
     computed: {
         baseUrl: function () {
             return process.env.BASE_URL

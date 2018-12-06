@@ -57,6 +57,7 @@ export default {
         const vm = this
         this.$socket.emit('create-session', '', function(code) {
             vm.code = code
+            vm.$emit('session-started', code)
         });
 
     }

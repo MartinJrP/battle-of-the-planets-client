@@ -2,16 +2,16 @@
 
     <!-- COME BACK TO THIS -->
     <tr id="player-table-cell">
-        <td class="round-number">1</td>
+        <td class="round-number">{{ number }}</td>
         <td colspan="2"><img
-            v-bind:src="path" 
+            v-bind:src="pathes[0]" 
             alt="Planet Avatar" 
-            class="table-planet-avatar">Alexander</td>
+            class="table-planet-avatar">{{ round.playerOne | asUsername }}</td>
         <td class="vs-text">VS</td>
         <td colspan="2"><img
-            v-bind:src="path" 
+            v-bind:src="pathes[1]" 
             alt="Planet Avatar" 
-            class="table-planet-avatar">Jess</td>
+            class="table-planet-avatar">{{ round.playerOne | asUsername }}</td>
     </tr>
     
 </template>
@@ -19,13 +19,28 @@
 <script>
 export default {
 name: "PlayerTableCell",
+props: ['round', 'number'],
+filters: {
+    asUsername: function (playerNumber) {
+        return this.$root.$data.players.find(player => player.num === playerNumber).username
+    }
+},
 computed: {
     baseUrl: function () {
         return process.env.BASE_URL
     },
-    path: function () {
-        var path = `${this.baseUrl}img/planet-${ this.player.num }.png`
+    imageBasePath: function () {
+        let isProduction = process.env.NODE_ENV === 'production'
+        let baseUrl = isProduction ? this.baseUrl : window.location.host + '/'
+        let protocol = isProduction ? 'https' : 'http'
+        let path = `${protocol}://${baseUrl}img/`
         return path
+    },
+    pathes: function () {
+        return [
+            this.imageBasePath + 'planet-' + this.round.playerOne + '.png',
+            this.imageBasePath + 'planet-' + this.round.playerTwo + '.png',
+        ]
     }
 }
 
