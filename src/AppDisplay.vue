@@ -8,10 +8,13 @@
     <the-game-session
       v-if="state == 'session-started'"
       @session-started="setGameCode"
+      @player-added="addPlayer"
+      :players="players"
       v-on:generate-teams = "generateTeams"/>
 
     <the-generated-teams-screen 
       :rounds="rounds"
+      :players="players"
       v-if="state == 'teams-generated'"/>
 
 
@@ -42,6 +45,9 @@ export default Vue.extend({
     },
     setGameCode: function (code: string) {
       this.sessionId = code
+    },
+    addPlayer: function (player: any) {
+      this.players.push(player)
     },
     generateTeams: function(){
       const vm = this

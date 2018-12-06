@@ -39,7 +39,8 @@ export default {
             //this.players.push(player);
         },
         ['player-updated']: function (player) {
-            this.players.push(player)
+            //this.players.push(player)
+            this.$emit('player-added', player)
         }
     },
     methods: {
@@ -47,10 +48,11 @@ export default {
             this.$emit("generate-teams");
         }
     },
+    props: ['players'],
     data: function () {
         return {
             code: '',
-            players: []
+            //players: []
         }
     },
     mounted: function () {

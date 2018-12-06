@@ -28,6 +28,7 @@
                     v-for="(round, index) in rounds"
                     :key="index"
                     :round="round"
+                    :players="players"
                     :number="index + 1"
                 />
 
@@ -46,7 +47,7 @@ import PlayerTableCell from './PlayerTableCell.vue';
 export default {
     name: 'TheGeneratedTeamsScreen',
     components: { PlayerTableCell },
-    props: ['rounds'],
+    props: ['rounds', 'players'],
     computed: {
         baseUrl: function () {
             return process.env.BASE_URL
@@ -54,11 +55,6 @@ export default {
         path: function () {
             var path = `${this.baseUrl}img/planet-1.png`
             return path
-        }
-    },
-    data: function(){
-        return {
-            rounds: []
         }
     }
 }
