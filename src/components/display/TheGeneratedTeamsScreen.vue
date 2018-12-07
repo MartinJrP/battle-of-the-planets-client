@@ -21,17 +21,21 @@
 
             </table>
 
-            <button class="main-button start-first-round">Start Game</button>
+            <button 
+            class="main-button start-first-round"
+            @click="$emit('next-screen')">
+                Start Game
+            </button>
 
         </div>
     </div>
 </template>
 
-<script>
-
+<script lang="ts">
+import Vue from 'vue'
 import PlayerTableCell from './PlayerTableCell.vue';
 
-export default {
+export default Vue.extend({
     name: 'TheGeneratedTeamsScreen',
     components: { PlayerTableCell },
     props: ['rounds', 'players'],
@@ -44,7 +48,7 @@ export default {
             return path
         }
     }
-}
+})
 </script>
 
 <style lang="scss">

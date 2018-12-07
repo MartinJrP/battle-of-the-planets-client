@@ -15,6 +15,7 @@
     <the-generated-teams-screen 
       :rounds="rounds"
       :players="players"
+      @next-screen="prepareNextRound"
       v-if="state == 'teams-generated'"/>
 
     <round-starting-screen
@@ -70,6 +71,12 @@ export default Vue.extend({
         this.rounds = rounds
         DisplayStore.rounds = rounds
       })
+    },
+    prepareNextRound: function () {
+        this.state = 'round-starting'
+        this.$socket.emit('prepare-next-round', DisplayStore.sessionId, (roundNum: number) => {
+            DisplayStore.currentRoundNum = roundNum
+        })
     }
   }
 });

@@ -60,6 +60,9 @@ export default Vue.extend({
     },
     ['player-updated']: function (player) {
       RemoteStore.$data.players.push(player)
+    },
+    ['prepare-to-play']: function () {
+      this.state = 'ready-prompt'
     }
   },
   data: function () {
