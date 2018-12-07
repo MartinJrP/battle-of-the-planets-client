@@ -17,6 +17,13 @@
       :players="players"
       v-if="state == 'teams-generated'"/>
 
+    <round-starting-screen
+      v-if="state == 'round-starting'"/>
+
+    <round-starting-countdown-screen
+      v-if="state == 'begin-countdown'"/>
+
+
 
   </div>
 </template>
@@ -27,12 +34,16 @@ import Vue from 'vue';
 import TheHomeScreen from './components/display/TheHomeScreen.vue';
 import TheGameSession from './components/display/TheGameSession.vue';
 import TheGeneratedTeamsScreen from './components/display/TheGeneratedTeamsScreen.vue';
+import RoundStartingScreen from './components/display/RoundStartingScreen.vue';
+import RoundStartingCountdownScreen from './components/display/RoundStartingCountdownScreen.vue';
+
 
 export default Vue.extend({
   name: 'app-display',
-  components: { TheHomeScreen, TheGameSession, TheGeneratedTeamsScreen },
+  components: { TheHomeScreen, TheGameSession, TheGeneratedTeamsScreen, RoundStartingScreen, RoundStartingCountdownScreen },
   data: function () {
     return {
+      // change back to 'welcome'
       state: 'welcome',
       sessionId: '',
       players: [] as any,

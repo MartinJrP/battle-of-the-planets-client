@@ -2,20 +2,25 @@
   <div id="app">
     <the-mobile-home-screen
       v-if="state == 'welcome'"
-      v-on:code-accepted="joinGame"></the-mobile-home-screen>
+      v-on:code-accepted="joinGame"/>
 
     <the-enter-name-screen
       v-on:update-username="updateUsername"
       v-on:connection-confirmed="connectionConfirmed"
-      v-if="state == 'joined-game'"></the-enter-name-screen>
+      v-if="state == 'joined-game'"/>
 
     <the-connection-confirmed-screen
       v-bind:player="player"
-      v-if="state == 'connection-confirmed'"></the-connection-confirmed-screen>
+      v-if="state == 'connection-confirmed'"/>
 
     <the-player-round-info-screen
-      v-if="state == 'teams-generated'"
-    ></the-player-round-info-screen>
+      v-if="state == 'teams-generated'"/>
+
+    <the-ready-confirmation-screen
+      v-if="state == 'ready-prompt'"/>
+
+    <the-mobile-round-starting-countdown-screen
+      v-if="state == 'round-starting'"/>
 
   </div>
 </template>
@@ -23,16 +28,29 @@
 <script lang="ts">
 import Vue from 'vue';
 
+// Home Screen - Enter Code
 import TheMobileHomeScreen from './components/remote/TheMobileHomeScreen.vue';
+
+// Enter Name
 import TheEnterNameScreen from './components/remote/TheEnterNameScreen.vue';
+
+// Confirm to user they are connected
 import TheConnectionConfirmedScreen from './components/remote/TheConnectionConfirmedScreen.vue';
+
+// Display team, round, and opponent info
 import ThePlayerRoundInfoScreen from './components/remote/ThePlayerRoundInfoScreen.vue';
+
+// Prompt user to let us know they're ready to play
+import TheReadyConfirmationScreen from './components/remote/TheReadyConfirmationScreen.vue';
+
+// Match countdown on the screen before round starts
+import TheMobileRoundStartingCountdownScreen from './components/remote/TheMobileRoundStartingCountdownScreen.vue';
 
 import { RemoteStore } from './RemoteStore'
 
 export default Vue.extend({
   name: 'AppRemote',
-  components: { TheMobileHomeScreen, TheEnterNameScreen, TheConnectionConfirmedScreen, ThePlayerRoundInfoScreen },
+  components: { TheMobileHomeScreen, TheEnterNameScreen, TheConnectionConfirmedScreen, ThePlayerRoundInfoScreen, TheReadyConfirmationScreen, TheMobileRoundStartingCountdownScreen  },
   sockets: {
     ['teams-generated']: function(round) {
         RemoteStore.$data.rounds.push(round)
@@ -45,6 +63,7 @@ export default Vue.extend({
   },
   data: function () {
     return {
+      // change back to 'welcome'
       state: 'welcome',
       sessionId: '',
 

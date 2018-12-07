@@ -5,7 +5,7 @@
 
             <p>You're playing</p>
 
-            <h1>Round #{{ roundNumber }}</h1>
+            <h1 class="round-number-text">Round #{{ roundNumber }}</h1>
 
             <p>VS</p>
 
@@ -48,5 +48,28 @@ export default {
 </script>
 
 <style lang="scss">
+
+#the-player-round-info-screen p {
+    font-family: "Poppins", sans-serif;
+    font-size:20px;
+    font-weight: 600;
+    margin-top:40px;
+}
+
+#the-player-round-info-screen p:nth-of-type(2) {
+    font-family: "Poppins", sans-serif;
+    font-size:28px;
+    font-weight:800;
+    text-transform: uppercase;
+    margin-top:32px;
+    color:#AE97F4;
+}
+
+#the-player-round-info-screen h1:nth-of-type(2) {
+    margin-top:24px;
+}
+
+
+
 
 </style>
