@@ -4,7 +4,7 @@
             <h1>You're In!</h1>
 
             <mobile-player-card
-                v-bind:player="player"></mobile-player-card>
+                v-bind:player="currentPlayer"></mobile-player-card>
             
             <div class="loading-message">
                 
@@ -18,7 +18,6 @@
                 <p>Just sit tight while we wait for the rest of the class to join. The moderator will start the game when we're ready!</p>
 
 
-
             </div>
             
         </div>
@@ -30,10 +29,17 @@
 import Vue from 'vue'
 import MobilePlayerCard from './MobilePlayerCard.vue';
 
+import { RemoteStore } from '@/RemoteStore'
+
 export default Vue.extend({
     name:"TheConnectionConfirmedScreen",
     components: { MobilePlayerCard },
-    props: ["player"]
+    props: ["player"],
+    computed: {
+        currentPlayer: function () {
+            return RemoteStore.$data.currentPlayer
+        }
+    }
 })
 </script>
 

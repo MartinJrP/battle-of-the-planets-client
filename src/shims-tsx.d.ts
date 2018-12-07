@@ -12,6 +12,14 @@ declare global {
   }
 }
 
+declare module 'vue/types/options' {
+  interface ComponentOptions<V extends Vue> {
+    sockets?: { 
+      [key: string]: (data: any | undefined) => void
+    }
+  }
+}
+
 declare module 'vue/types/vue' {
   interface Vue {
     $socket: any

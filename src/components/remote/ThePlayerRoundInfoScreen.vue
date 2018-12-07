@@ -1,15 +1,19 @@
 <template>
     <div id="the-player-round-info-screen">
         <div class="container">
-            <h1>Team #1</h1>
+            <h1>Team #{{ teamNumber }}</h1>
 
             <p>You're playing</p>
 
-            <h1>Round #{{ roundNum }}</h1>
+            <h1>Round #{{ roundNumber }}</h1>
 
             <p>VS</p>
 
-            <mobile-player-card></mobile-player-card>
+            <mobile-player-card :player="opponentOne"></mobile-player-card>
+
+            <p v-if="opponentTwo">
+                You'll also battle {{ opponentTwo.username }} in the final, bonus round.
+            </p>
         </div>
     </div>
     
@@ -18,17 +22,26 @@
 <script>
 import MobilePlayerCard from './MobilePlayerCard.vue'
 
+import { RemoteStore } from '@/RemoteStore'
+
 export default {
     name:"ThePlayerRoundInfoScreen",
     components: { MobilePlayerCard },
-    sockets: {
-        ['teams-generated']: function(rounds) {
-            // Get round info here
-        }
-    },
-    data: function(){
-        return {
-            roundNum: '',
+    computed: {
+        opponentOne: function () {
+            return RemoteStore.opponentOne
+        }, 
+        opponentTwo: function () {
+            return RemoteStore.opponentTwo
+        },
+        teamNumber: function () {
+            return RemoteStore.teamNumber
+        },
+        roundNumber: function () {
+            return RemoteStore.rounds[0].num
+        },
+        round: function () {
+            return RemoteStore.rounds[0]
         }
     }
 }

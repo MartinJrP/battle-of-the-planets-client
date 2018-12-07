@@ -13,7 +13,9 @@
       v-bind:player="player"
       v-if="state == 'connection-confirmed'"></the-connection-confirmed-screen>
 
-    <!-- <the-player-round-info-screen></the-player-round-info-screen> -->
+    <the-player-round-info-screen
+      v-if="state == 'teams-generated'"
+    ></the-player-round-info-screen>
 
   </div>
 </template>
@@ -26,21 +28,34 @@ import TheEnterNameScreen from './components/remote/TheEnterNameScreen.vue';
 import TheConnectionConfirmedScreen from './components/remote/TheConnectionConfirmedScreen.vue';
 import ThePlayerRoundInfoScreen from './components/remote/ThePlayerRoundInfoScreen.vue';
 
+import { RemoteStore } from './RemoteStore'
+
 export default Vue.extend({
   name: 'AppRemote',
   components: { TheMobileHomeScreen, TheEnterNameScreen, TheConnectionConfirmedScreen, ThePlayerRoundInfoScreen },
+  sockets: {
+    ['teams-generated']: function(round) {
+        RemoteStore.$data.rounds.push(round)
+        this.rounds.push(round)
+        this.state = 'teams-generated'
+    },
+    ['player-updated']: function (player) {
+      RemoteStore.$data.players.push(player)
+    }
+  },
   data: function () {
     return {
       state: 'welcome',
       sessionId: '',
 
       // The current player
-      player: {} as any
+      player: {} as any,
+      rounds: [] as any
     }
   },
   methods: {
     joinGame: function(sessionId: string) {
-      const vm = this as any
+      const vm = this
 
       vm.$socket.emit('join-session', sessionId, function (player: any) {
           if (player.error) {
@@ -48,12 +63,13 @@ export default Vue.extend({
           } else {
               vm.state = 'joined-game';
               vm.player = player
+              RemoteStore.$data.currentPlayer = player
               vm.sessionId = sessionId
               alert('Joined Game. You\'re: ' + player.username)
           }
       })
     },
-    updateUsername: function (username: string) {
+    updateUsername: function (username: any) {
       const data = {
          newUsername: username, 
          num: this.player.num, 
@@ -61,12 +77,13 @@ export default Vue.extend({
       }
       this.$socket.emit('update-username', data)
       this.player.username = username
+      RemoteStore.$data.currentPlayer.username = username
     },
     connectionConfirmed: function(){
       this.state = 'connection-confirmed';
     }
   }
-});
+})
 </script>
 
 <style lang="scss">
