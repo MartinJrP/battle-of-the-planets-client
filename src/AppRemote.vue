@@ -17,6 +17,7 @@
       v-if="state == 'teams-generated'"/>
 
     <the-ready-confirmation-screen
+      v-bind:player="player"
       v-if="state == 'ready-prompt'"/>
 
     <the-mobile-round-starting-countdown-screen

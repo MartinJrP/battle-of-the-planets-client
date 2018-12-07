@@ -10,6 +10,7 @@
 <script>
 export default {
     name: "PlayerAvatar",
+    props: ['player'],
     computed: {
         baseUrl: function () {
             return process.env.BASE_URL
@@ -18,7 +19,7 @@ export default {
             let isProduction = process.env.NODE_ENV === 'production'
             let baseUrl = isProduction ? this.baseUrl : window.location.host + '/'
             let protocol = isProduction ? 'https' : 'http'
-            var path = `${protocol}://${baseUrl}img/planet-1.png`
+            var path = `${protocol}://${baseUrl}img/planet-${ this.player.num }.png`
             return path
         }
     }

@@ -3,7 +3,8 @@
 
         <div class="container">
 
-            <player-avatar/>
+            <player-avatar
+                v-bind:player="currentPlayer"/>
 
             <h1>Are you ready?</h1>
 
@@ -29,20 +30,28 @@
     </div>
 </template>
 
-<script>
-
+<script lang="ts">
+import Vue from 'vue'
 import PlayerAvatar from './PlayerAvatar.vue';
 
-export default {
+import { RemoteStore } from '@/RemoteStore';
+
+export default Vue.extend({
     name: "TheReadyConfirmationScreen",
+    props:['player'],
     components: { PlayerAvatar },
     data: function() {
         return {
             state: 'ready-notClicked'
         }
+    },
+    computed: {
+        currentPlayer: function () {
+            return RemoteStore.$data.currentPlayer
+        }
     }
     
-}
+})
 </script>
 
 <style lang="scss">
