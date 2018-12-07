@@ -13,11 +13,10 @@
                 </tr>
 
                 <player-table-cell
-                    v-for="(round, index) in rounds"
-                    :key="index"
+                    v-for="round in rounds"
+                    :key="round.num"
                     :round="round"
                     :players="players"
-                    :number="index + 1"
                 />
 
             </table>

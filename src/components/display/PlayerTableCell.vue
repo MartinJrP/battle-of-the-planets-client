@@ -2,16 +2,16 @@
 
     <!-- COME BACK TO THIS -->
     <tr id="player-table-cell">
-        <td class="round-number">{{ number }}</td>
+        <td class="round-number">{{ round.num }}</td>
         <td colspan="2"><img
             v-bind:src="pathes[0]" 
             alt="Planet Avatar" 
-            class="table-planet-avatar">{{ playerOne }}</td>
+            class="table-planet-avatar">{{ teamOnePlayerNum }}</td>
         <td class="vs-text">VS</td>
         <td colspan="2"><img
             v-bind:src="pathes[1]" 
             alt="Planet Avatar" 
-            class="table-planet-avatar">{{ playerTwo }}</td>
+            class="table-planet-avatar">{{ teamTwoPlayerNum }}</td>
     </tr>
     
 </template>
@@ -19,7 +19,7 @@
 <script>
 export default {
 name: "PlayerTableCell",
-props: ['round', 'number', 'players'],
+props: ['round', 'players'],
 computed: {
     baseUrl: function () {
         return process.env.BASE_URL
@@ -30,15 +30,15 @@ computed: {
         let protocol = isProduction ? 'https' : 'http'
         let basePath = `${protocol}://${baseUrl}img/`
         return [
-            basePath + 'planet-' + this.round.playerOne + '.png',
-            basePath + 'planet-' + this.round.playerTwo + '.png',
+            basePath + 'planet-' + this.round.teamOnePlayerNum + '.png',
+            basePath + 'planet-' + this.round.teamTwoPlayerNum + '.png',
         ]
     },
-    playerOne: function () {
-        return this.players.find(player => player.num === this.round.playerOne).username
+    teamOnePlayerNum: function () {
+        return this.players.find(player => player.num === this.round.teamOnePlayerNum).username
     },
-    playerTwo: function () {
-        return this.players.find(player => player.num === this.round.playerTwo).username
+    teamTwoPlayerNum: function () {
+        return this.players.find(player => player.num === this.round.teamTwoPlayerNum).username
     }
 }
 
