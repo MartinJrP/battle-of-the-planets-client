@@ -1,29 +1,45 @@
 <template>
     <div id="round-starting-screen">
-        <h1>ROUND #1</h1>
+        <h1>ROUND #{{ currentRoundNum }}</h1>
 
         <h2>Multiplication</h2>
 
         <div class="opponents-container">
 
-            <round-starting-player-card></round-starting-player-card>
+            <round-starting-player-card
+            v-bind:player="teamOnePlayer"/>
 
             <p>VS</p>
 
-            <round-starting-player-card></round-starting-player-card>
+            <round-starting-player-card
+            v-bind:player="teamTwoPlayer"/>
 
         </div>
 
     </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
 import RoundStartingPlayerCard from './RoundStartingPlayerCard.vue';
 
-export default {
+import { DisplayStore } from '@/DisplayStore';
+
+export default Vue.extend({
     name: "RoundStartingScreen",
-    components: { RoundStartingPlayerCard }
-}
+    components: { RoundStartingPlayerCard },
+    computed: {
+        teamOnePlayer: function(){
+            return DisplayStore.teamOnePlayer;
+        },
+        teamTwoPlayer: function(){
+            return DisplayStore.teamTwoPlayer;
+        },
+        currentRoundNum: function () {
+            return DisplayStore.currentRoundNum
+        }
+    }
+})
 </script>
 
 <style lang="scss">

@@ -11,7 +11,8 @@
             <p>The question will appear once you are BOTH ready to play. Make sure you are watching the screen!</p>
 
             <button class="mobile-main-button"
-                v-if="state == 'ready-notClicked'">Ready</button>
+                v-if="state == 'ready-notClicked'"
+                v-on:click="emitPlayerReadyEvent">Ready</button>
 
             <div class="waiting-container"
                 v-if="state == 'ready-clicked'">
@@ -45,6 +46,12 @@ export default Vue.extend({
             state: 'ready-notClicked'
         }
     },
+    methods: {
+        emitPlayerReadyEvent: function () {
+            this.$socket.emit('player-ready');
+            this.state = 'ready-clicked'
+        }
+    }, 
     computed: {
         currentPlayer: function () {
             return RemoteStore.$data.currentPlayer

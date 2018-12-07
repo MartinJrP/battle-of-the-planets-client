@@ -37,6 +37,7 @@ import TheGeneratedTeamsScreen from './components/display/TheGeneratedTeamsScree
 import RoundStartingScreen from './components/display/RoundStartingScreen.vue';
 import RoundStartingCountdownScreen from './components/display/RoundStartingCountdownScreen.vue';
 
+import { DisplayStore } from './DisplayStore'
 
 export default Vue.extend({
   name: 'app-display',
@@ -55,9 +56,11 @@ export default Vue.extend({
       this.state = 'session-started';
     },
     setGameCode: function (code: string) {
+      DisplayStore.sessionId = code
       this.sessionId = code
     },
     addPlayer: function (player: any) {
+      DisplayStore.players.push(player)
       this.players.push(player)
     },
     generateTeams: function(){
@@ -65,6 +68,7 @@ export default Vue.extend({
       this.state = 'teams-generated';
       this.$socket.emit('generate-teams', this.sessionId, (rounds: any) => {
         this.rounds = rounds
+        DisplayStore.rounds = rounds
       })
     }
   }
