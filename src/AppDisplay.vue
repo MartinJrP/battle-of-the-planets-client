@@ -73,13 +73,17 @@ export default Vue.extend({
       this.$socket.emit('prepare-next-round', this.sessionId, (roundNum: number) => {
         this.$store.commit('setCurrentRoundNum', roundNum)
         this.state = 'round-starting'
+
+        this.$socket.emit('dispense-question', this.sessionId, (question: any) => {
+          this.$store.commit('setCurrentQuestion', question)
+        })
       })
     },
     beingRound: function () {
-      this.$socket.emit('dispense-question', this.sessionId, (question: any) => {
-        this.$store.commit('setCurrentQuestion', question)
+      // this.$socket.emit('dispense-question', this.sessionId, (question: any) => {
+      //   this.$store.commit('setCurrentQuestion', question)
         this.state = 'question-started'
-      })
+      // })
     }
   }
 });

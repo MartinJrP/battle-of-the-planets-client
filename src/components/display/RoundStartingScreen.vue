@@ -2,7 +2,7 @@
     <div id="round-starting-screen">
         <h1>ROUND #{{ currentRoundNum }}</h1>
 
-        <h2>Multiplication</h2>
+        <h2>{{ currentQuestion.category }}</h2>
 
         <div class="opponents-container">
 
@@ -43,7 +43,7 @@ export default Vue.extend({
         }
     },
     computed: {
-        ...mapState(['currentRoundNum']),
+        ...mapState(['currentRoundNum', 'currentQuestion']),
         ...mapGetters(['teamOnePlayer', 'teamTwoPlayer'])
     }
 })
