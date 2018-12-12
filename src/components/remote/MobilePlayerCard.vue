@@ -39,12 +39,14 @@ export default Vue.extend({
 
 img {
     width:140px;
+    margin-bottom:0;
 }
 
 #mobile-player-card p {
     font-family: "Open Sans", sans-serif;
     font-size:24px;
     font-weight:700;
+    margin-top:0;
 }
 
 </style>

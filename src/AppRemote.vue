@@ -24,6 +24,12 @@
       v-bind:player="player"
       v-if="state == 'round-starting'"/>
 
+    <the-mobile-question-screen
+      v-if="state == 'answering-question'"/>
+
+    <the-too-late-screen
+      v-if="state == 'late-click'"/>
+
   </div>
 </template>
 
@@ -48,11 +54,17 @@ import TheReadyConfirmationScreen from './components/remote/TheReadyConfirmation
 // Press button screen appears with disabled button until whole question and answers appear on display
 import ThePressButtonScreen from './components/remote/ThePressButtonScreen.vue';
 
+// This question screen appears to whoever clicks the button first or if the first person answers incorrectly, to their opponent
+import TheMobileQuestionScreen from './components/remote/TheMobileQuestionScreen.vue';
+
+// This screen appears for the user when they are too late to press the button and their opponent is answering
+import TheTooLateScreen from './components/remote/TheTooLateScreen.vue';
+
 import { RemoteStore } from './RemoteStore'
 
 export default Vue.extend({
   name: 'AppRemote',
-  components: { TheMobileHomeScreen, TheEnterNameScreen, TheConnectionConfirmedScreen, ThePlayerRoundInfoScreen, TheReadyConfirmationScreen, ThePressButtonScreen },
+  components: { TheMobileHomeScreen, TheEnterNameScreen, TheConnectionConfirmedScreen, ThePlayerRoundInfoScreen, TheReadyConfirmationScreen, ThePressButtonScreen, TheMobileQuestionScreen, TheTooLateScreen },
   sockets: {
     ['teams-generated']: function(res) {
         RemoteStore.rounds.push(res.round)

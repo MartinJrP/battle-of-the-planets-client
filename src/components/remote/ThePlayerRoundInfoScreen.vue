@@ -52,11 +52,10 @@ export default {
 
 <style lang="scss">
 
-#the-player-round-info-screen p {
+#the-player-round-info-screen p:first-of-type {
     font-family: "Poppins", sans-serif;
     font-size:20px;
     font-weight: 600;
-    margin-top:40px;
 }
 
 #the-player-round-info-screen p:nth-of-type(2) {
@@ -65,7 +64,12 @@ export default {
     font-weight:800;
     text-transform: uppercase;
     margin-top:32px;
+    margin-bottom:16px;
     color:#AE97F4;
+}
+
+#the-player-round-info-screen h1:nth-of-type(1) {
+    margin-bottom:40px;
 }
 
 #the-player-round-info-screen h1:nth-of-type(2) {
