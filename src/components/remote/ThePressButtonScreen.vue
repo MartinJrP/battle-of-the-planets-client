@@ -32,6 +32,11 @@ import { RemoteStore } from '@/RemoteStore';
 export default Vue.extend({
     name: "ThePressButtonScreen",
     props:['player'],
+    sockets: {
+        ['allow-answers']: function () {
+            this.butttonDisabled = false
+        }
+    },
     data: function () {
         return {
             butttonDisabled: true

@@ -36,7 +36,7 @@ export default Vue.extend({
     }),
     methods: {
         beginAcceptingQuestions: function () {
-            // Emit a socket thing here...
+            this.$socket.emit('begin-accepting-responses', this.$store.state.sessionId)
             this.shouldShowOptions = true
         }
     },
