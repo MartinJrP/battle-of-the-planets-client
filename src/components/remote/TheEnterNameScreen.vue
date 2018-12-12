@@ -9,7 +9,7 @@
             <form 
             v-on:submit.prevent="emitUsername">
                 
-                <input class="text-input" placeholder="First Name" v-model="username">
+                <input class="text-input" placeholder="First Name" autofocus v-model="username">
 
                 <button class="mobile-main-button">Join Game</button>
 
@@ -45,6 +45,10 @@ export default {
     background-repeat: no-repeat;
     background-position: center;
     height:100%;
+
+    input {
+        outline: none;
+    }
 }
 
 </style>

@@ -34,12 +34,14 @@
 <script lang="ts">
 import Vue from 'vue'
 import PlayerTableCell from './PlayerTableCell.vue';
+import { mapState } from 'vuex';
 
 export default Vue.extend({
     name: 'TheGeneratedTeamsScreen',
     components: { PlayerTableCell },
-    props: ['rounds', 'players'],
     computed: {
+        ...mapState(['rounds', 'players']),
+        
         baseUrl: function () {
             return process.env.BASE_URL
         },

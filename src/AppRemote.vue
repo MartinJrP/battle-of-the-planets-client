@@ -53,14 +53,17 @@ export default Vue.extend({
   name: 'AppRemote',
   components: { TheMobileHomeScreen, TheEnterNameScreen, TheConnectionConfirmedScreen, ThePlayerRoundInfoScreen, TheReadyConfirmationScreen, TheMobileRoundStartingCountdownScreen  },
   sockets: {
-    ['teams-generated']: function(round) {
-        RemoteStore.$data.rounds.push(round)
-        this.rounds.push(round)
+    ['teams-generated']: function(res) {
+        RemoteStore.rounds.push(res.round)
+        this.rounds.push(res.round)
+
+        RemoteStore.players = res.players
+
         this.state = 'teams-generated'
     },
-    ['player-updated']: function (player) {
-      RemoteStore.$data.players.push(player)
-    },
+    // ['player-updated']: function (player) {
+    //   RemoteStore.players.push(player)
+    // },
     ['prepare-to-play']: function () {
       this.state = 'ready-prompt'
     }
@@ -88,7 +91,7 @@ export default Vue.extend({
               vm.player = player
               RemoteStore.$data.currentPlayer = player
               vm.sessionId = sessionId
-              alert('Joined Game. You\'re: ' + player.username)
+              //alert('Joined Game. You\'re: ' + player.username)
           }
       })
     },

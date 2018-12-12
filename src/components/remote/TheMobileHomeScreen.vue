@@ -12,6 +12,7 @@
                 <input 
                     v-model="inputCode"
                     class="text-input" 
+                    autofocus
                     placeholder="Game Code"/>
 
                 <button 
@@ -49,6 +50,10 @@
     background-repeat: no-repeat;
     background-position: center;
     height:100%;
+
+    input {
+        outline: none;
+    }
 }
 
 </style>

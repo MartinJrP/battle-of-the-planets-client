@@ -42,6 +42,9 @@ export default {
         },
         round: function () {
             return RemoteStore.rounds[0]
+        },
+        players: function () {
+            return RemoteStore.players
         }
     }
 }

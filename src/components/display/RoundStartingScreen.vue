@@ -22,22 +22,24 @@
 <script lang="ts">
 import Vue from 'vue'
 import RoundStartingPlayerCard from './RoundStartingPlayerCard.vue';
-
-import { DisplayStore } from '@/DisplayStore';
+import { mapState, mapGetters } from 'vuex';
 
 export default Vue.extend({
     name: "RoundStartingScreen",
     components: { RoundStartingPlayerCard },
     computed: {
-        teamOnePlayer: function(){
-            return DisplayStore.teamOnePlayer;
-        },
-        teamTwoPlayer: function(){
-            return DisplayStore.teamTwoPlayer;
-        },
-        currentRoundNum: function () {
-            return DisplayStore.currentRoundNum
-        }
+        ...mapState(['currentRoundNum']),
+        ...mapGetters(['teamOnePlayer', 'teamTwoPlayer'])
+        
+        // teamOnePlayer: function(){
+        //     return this.$store.getters.teamOnePlayer
+        // },
+        // teamTwoPlayer: function(){
+        //     return this.$store.getters.teamTwoPlayer
+        // },
+        // currentRoundNum: function () {
+        //     return this.$store.state.currentRoundNum
+        // }
     }
 })
 </script>

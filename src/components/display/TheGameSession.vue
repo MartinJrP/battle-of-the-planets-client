@@ -34,25 +34,20 @@ import PlayerCard from './PlayerCard.vue';
 export default {
     name: 'TheGameSession',
     components: { PlayerCard },
-    sockets: {
-        ['player-added']: function(player) {
-            //this.players.push(player);
-        },
-        ['player-updated']: function (player) {
-            //this.players.push(player)
-            this.$emit('player-added', player)
-        }
-    },
     methods: {
         emitGenerateTeamsEvent: function () {
             this.$emit("generate-teams");
         }
     },
-    props: ['players'],
     data: function () {
         return {
             code: '',
             //players: []
+        }
+    },
+    computed: {
+        players: function () {
+            return this.$store.state.players
         }
     },
     mounted: function () {
