@@ -24,6 +24,9 @@
     <the-question-screen
       v-if="state == 'question-started'"/>
 
+    <the-final-results-screen
+      v-if="state == 'game-over'"/>
+
   </div>
 </template>
 
@@ -36,12 +39,13 @@ import TheGeneratedTeamsScreen from './components/display/TheGeneratedTeamsScree
 import RoundStartingScreen from './components/display/RoundStartingScreen.vue';
 import RoundStartingCountdownScreen from './components/display/RoundStartingCountdownScreen.vue';
 import TheQuestionScreen from './components/display/TheQuestionScreen.vue';
+import TheFinalResultsScreen from './components/display/TheFinalResultsScreen.vue';
 
 import { mapState, mapMutations } from 'vuex';
 
 export default Vue.extend({
   name: 'app-display',
-  components: { TheHomeScreen, TheGameSession, TheGeneratedTeamsScreen, RoundStartingScreen, RoundStartingCountdownScreen, TheQuestionScreen },
+  components: { TheHomeScreen, TheGameSession, TheGeneratedTeamsScreen, RoundStartingScreen, RoundStartingCountdownScreen, TheQuestionScreen, TheFinalResultsScreen },
   sockets: {
     ['begin-round']: function() {
       this.state = 'begin-countdown'

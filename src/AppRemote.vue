@@ -106,7 +106,7 @@ export default Vue.extend({
   data: function () {
     return {
       // change back to 'welcome'
-      state: 'player-lost',
+      state: 'welcome',
       sessionId: '',
 
       // The current player
