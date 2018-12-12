@@ -30,6 +30,14 @@
     <the-too-late-screen
       v-if="state == 'late-click'"/>
 
+    <the-answer-result-screen
+      v-bind:player="player"
+      v-if="state == 'answer-result'"/>
+
+    <the-lost-round-screen
+      v-bind:player="player"
+      v-if="state == 'player-lost'"/>
+
   </div>
 </template>
 
@@ -60,11 +68,18 @@ import TheMobileQuestionScreen from './components/remote/TheMobileQuestionScreen
 // This screen appears for the user when they are too late to press the button and their opponent is answering
 import TheTooLateScreen from './components/remote/TheTooLateScreen.vue';
 
+// This screen shows the results of whether the user who clicked was correct or incorrect
+import TheAnswerResultScreen from './components/remote/TheAnswerResultScreen.vue';
+
+// This screen shows when a user loses the round
+import TheLostRoundScreen from './components/remote/TheLostRoundScreen.vue';
+
+
 import { RemoteStore } from './RemoteStore'
 
 export default Vue.extend({
   name: 'AppRemote',
-  components: { TheMobileHomeScreen, TheEnterNameScreen, TheConnectionConfirmedScreen, ThePlayerRoundInfoScreen, TheReadyConfirmationScreen, ThePressButtonScreen, TheMobileQuestionScreen, TheTooLateScreen },
+  components: { TheMobileHomeScreen, TheEnterNameScreen, TheConnectionConfirmedScreen, ThePlayerRoundInfoScreen, TheReadyConfirmationScreen, ThePressButtonScreen, TheMobileQuestionScreen, TheTooLateScreen, TheAnswerResultScreen, TheLostRoundScreen },
   sockets: {
     ['teams-generated']: function(res) {
         RemoteStore.rounds.push(res.round)
@@ -84,7 +99,7 @@ export default Vue.extend({
   data: function () {
     return {
       // change back to 'welcome'
-      state: 'welcome',
+      state: 'player-lost',
       sessionId: '',
 
       // The current player

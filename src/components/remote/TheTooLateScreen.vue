@@ -1,13 +1,13 @@
 <template>
     <div id="the-too-late-screen">
 
-        <h1>SORRY,<br> TOO LATE!</h1>
+        <h1>TOO SLOW!</h1>
 
         <p>Your opponent clicked first and is answering the question.</p>
 
         <h2>If they answer wrong</h2>
 
-        <p>You'll get a chance to answer as well! <br>Be prepared to redeem yourself...</p>
+        <p>You'll get a chance to answer too! <br>Be prepared to redeem yourself.</p>
 
     </div>
 </template>
@@ -34,7 +34,8 @@ export default Vue.extend({
     #the-too-late-screen p {
         font-family: "Open Sans", sans-serif;
         font-size:16px;
-        margin:16px 0px 24px 0px;
+        margin:16px auto 24px auto;
+        width:288px;
     }
 
     #the-too-late-screen h2 {
