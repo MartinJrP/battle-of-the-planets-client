@@ -79,6 +79,13 @@ export default Vue.extend({
     },
     ['begin-round']: function () {
       this.state = 'round-starting'
+    },
+    ['player-can-respond']: function (teamNum) {
+      if (RemoteStore.currentPlayer.num === teamNum) {
+        this.state = 'answering-question'
+      } else {
+        this.state = 'late-click'
+      }
     }
   },
   data: function () {

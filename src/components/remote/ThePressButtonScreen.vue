@@ -13,6 +13,7 @@
             <p>Once the question is done loading, press the button below to answer. </p>
 
             <button class="mobile-main-button" 
+                    v-on:click="requestToAnswerQuestion"
                     v-bind:disabled="butttonDisabled">
                 {{ buttonText }}
             </button>
@@ -49,6 +50,17 @@ export default Vue.extend({
         },
         buttonText: function () {
             return this.butttonDisabled ? 'Ready. Set...' : 'GO!'
+        }
+    },
+    methods: {
+        requestToAnswerQuestion: function () {
+            if (this.butttonDisabled) return
+
+            this.$socket.emit('request-to-answer', {
+                sessionId: RemoteStore.sessionId, 
+                playerNum: RemoteStore.currentPlayer.num, 
+                timestamp: (new Date).getTime()
+            })
         }
     }
     
