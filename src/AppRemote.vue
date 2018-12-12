@@ -76,6 +76,9 @@ export default Vue.extend({
     },
     ['prepare-to-play']: function () {
       this.state = 'ready-prompt'
+    },
+    ['begin-round']: function () {
+      this.state = 'round-starting'
     }
   },
   data: function () {

@@ -9,7 +9,8 @@ export default new Vuex.Store({
     players: [] as any[],
     rounds: [] as any[],
     currentRoundNum: 0,
-    num: 0
+    num: 0,
+    currentQuestion: undefined as any
   },
   getters: {
     teamOnePlayer: function (state, getters) {
@@ -42,8 +43,8 @@ export default new Vuex.Store({
       setCurrentRoundNum (state, roundNum) {
         state.currentRoundNum = roundNum
       },
-      setNum (state, num) {
-        state.num = num
+      setCurrentQuestion (state, question) {
+        state.currentQuestion = question
       }
 
   },

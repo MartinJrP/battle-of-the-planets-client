@@ -76,7 +76,10 @@ export default Vue.extend({
       })
     },
     beingRound: function () {
-      //this.state = ''
+      this.$socket.emit('dispense-question', this.sessionId, (question: any) => {
+        this.$store.commit('setCurrentQuestion', question)
+        this.state = 'question-started'
+      })
     }
   }
 });

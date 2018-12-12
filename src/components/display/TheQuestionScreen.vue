@@ -1,14 +1,14 @@
 <template>
     <div id="the-question-screen">
-        <h1>Question #1</h1>
+        <h1>Question #{{ questionNumber }}</h1>
 
-        <p class="question">What tag can be used to insert a line break or blank line in an HTML document?</p>
+        <p class="question">{{ question.question }}</p>
 
         <div class="options-container">
             <div class="option"
-                v-for="(option, index) in options"
+                v-for="(option, index) in question.options"
                 v-bind:key="index">
-                <p><span class="white-letter"> {{ index + 1 }}.</span> {{ option }} </p>
+                <p><span class="white-letter"> {{ index | asLetter }}.</span> {{ option }} </p>
             </div>
 
         </div>
@@ -19,11 +19,27 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapState } from 'vuex';
 export default Vue.extend({
     name: "TheQuestionScreen",
     data: function(){
         return {
             options:['<br></br>','<head></head>','<title></title>','<body></body>']
+        }
+    },
+    computed: mapState({
+        question: state => (state as any).currentQuestion,
+        questionNumber: state => (state as any).currentRoundNum
+    }),
+    filters: {
+        asLetter: function (value: number) {
+            switch (value) {
+            case 0: return 'A'
+            case 1: return 'B'
+            case 2: return 'C'
+            case 3: return 'D'
+            default: return value
+            }
         }
     }
     

@@ -22,6 +22,8 @@ declare module 'vue/types/options' {
 
 declare module 'vue/types/vue' {
   interface Vue {
-    $socket: any
+    $socket: { 
+      emit: (eventName: string, payload: any, ...acknowledgement: any[]) => void
+    }
   }
 }

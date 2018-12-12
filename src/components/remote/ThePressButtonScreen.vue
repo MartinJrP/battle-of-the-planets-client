@@ -12,7 +12,10 @@
 
             <p>Once the question is done loading, press the button below to answer. </p>
 
-            <button class="mobile-main-button">I GOT IT</button>
+            <button class="mobile-main-button" 
+                    v-bind:disabled="butttonDisabled">
+                {{ buttonText }}
+            </button>
 
         </div>
 
@@ -29,10 +32,18 @@ import { RemoteStore } from '@/RemoteStore';
 export default Vue.extend({
     name: "ThePressButtonScreen",
     props:['player'],
+    data: function () {
+        return {
+            butttonDisabled: true
+        }
+    },
     components: { PlayerAvatar },
     computed: {
         currentPlayer: function () {
             return RemoteStore.$data.currentPlayer
+        },
+        buttonText: function () {
+            return this.butttonDisabled ? 'Ready. Set...' : 'GO!'
         }
     }
     
@@ -60,6 +71,10 @@ export default Vue.extend({
     margin-bottom:80px;
 }
 
+.mobile-main-button:disabled {
+    background-color: #333;
+    opacity: 0.4;
+}
 
 
 </style>
