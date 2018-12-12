@@ -21,14 +21,9 @@
       @countdown-ended="beingRound"
       v-if="state == 'begin-countdown'"/>
 
-<<<<<<< HEAD
-=======
     <the-question-screen
       v-if="state == 'question-started'"/>
 
-
-
->>>>>>> Added more styling and deleted the countdown page on the remote
   </div>
 </template>
 
