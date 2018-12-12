@@ -4,3 +4,5 @@ declare module '*.vue' {
 }
 
 declare module 'vue-socket.io'
+
+declare module 'vue-typed-js'

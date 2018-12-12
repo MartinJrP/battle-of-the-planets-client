@@ -2,9 +2,11 @@
     <div id="the-question-screen">
         <h1>Question #{{ questionNumber }}</h1>
 
-        <p class="question">{{ question.question }}</p>
+        <vue-typed-js :strings="[question.question]" @onComplete="beginAcceptingQuestions">
+            <p class="question typing"></p>
+        </vue-typed-js>
 
-        <div class="options-container">
+        <div class="options-container" v-if="shouldShowOptions">
             <div class="option"
                 v-for="(option, index) in question.options"
                 v-bind:key="index">
@@ -20,17 +22,24 @@
 <script lang="ts">
 import Vue from 'vue'
 import { mapState } from 'vuex';
+
 export default Vue.extend({
     name: "TheQuestionScreen",
     data: function(){
         return {
-            options:['<br></br>','<head></head>','<title></title>','<body></body>']
+            shouldShowOptions: false
         }
     },
     computed: mapState({
         question: state => (state as any).currentQuestion,
         questionNumber: state => (state as any).currentRoundNum
     }),
+    methods: {
+        beginAcceptingQuestions: function () {
+            // Emit a socket thing here...
+            this.shouldShowOptions = true
+        }
+    },
     filters: {
         asLetter: function (value: number) {
             switch (value) {

@@ -6,7 +6,9 @@ import store from './DisplayStore'
 Vue.config.productionTip = false
 
 import VueSocketIO from 'vue-socket.io'
+import VueTypedJs from 'vue-typed-js'
 
+Vue.use(VueTypedJs)
 Vue.use(new VueSocketIO({
   debug: true,
   connection: 'http://localhost:8000',

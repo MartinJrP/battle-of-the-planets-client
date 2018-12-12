@@ -20,7 +20,7 @@ export default Vue.extend({
     name: "TheMobileQuestionScreen.vue",
     data: function() {
         return {
-            options: ["1","2","3","4"]
+            options: ['A', 'B', 'C', 'D']
         }
     }
     
