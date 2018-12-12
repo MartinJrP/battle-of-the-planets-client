@@ -18,9 +18,8 @@
       v-if="state == 'round-starting'"/>
 
     <round-starting-countdown-screen
+      @countdown-ended="beingRound"
       v-if="state == 'begin-countdown'"/>
-
-
 
   </div>
 </template>
@@ -39,6 +38,11 @@ import { mapState, mapMutations } from 'vuex';
 export default Vue.extend({
   name: 'app-display',
   components: { TheHomeScreen, TheGameSession, TheGeneratedTeamsScreen, RoundStartingScreen, RoundStartingCountdownScreen },
+  sockets: {
+    ['begin-round']: function() {
+      this.state = 'begin-countdown'
+    }
+  },
   data: function () {
     return {
       // change back to 'welcome'
@@ -62,11 +66,13 @@ export default Vue.extend({
       })
     },
     prepareNextRound: function () {
-    
       this.$socket.emit('prepare-next-round', this.sessionId, (roundNum: number) => {
         this.$store.commit('setCurrentRoundNum', roundNum)
         this.state = 'round-starting'
       })
+    },
+    beingRound: function () {
+      //this.state = ''
     }
   }
 });

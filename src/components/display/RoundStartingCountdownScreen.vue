@@ -5,7 +5,7 @@
         <div class="container">
             <h1>ROUND #1 BEGINS IN . . .</h1>
 
-            <p class="countdown">5</p>
+            <p class="countdown">{{ counter }}</p>
 
             <button-clicked-indicator/>
         </div>
@@ -19,7 +19,28 @@ import ButtonClickedIndicator from './ButtonClickedIndicator.vue';
 
 export default {
     name: "RoundStartingCountdownScreen",
-    components: { ButtonClickedIndicator }
+    components: { ButtonClickedIndicator },
+    data: function () {
+        return {
+            counter: 5,
+            interval: undefined 
+        }
+    },
+    methods: {
+        decrementCounter: function () {
+            if (this.counter > 0) {
+                this.counter--
+            } else {
+                // Begin Game!!
+                clearInterval(this.interval)
+                this.$emit('countdown-ended')
+            }
+            
+        }
+    },
+    mounted: function () {
+        this.interval = setInterval(this.decrementCounter, 1000)
+    }
     
 }
 </script>
