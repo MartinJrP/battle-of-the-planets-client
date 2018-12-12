@@ -20,7 +20,8 @@
       v-bind:player="player"
       v-if="state == 'ready-prompt'"/>
 
-    <the-mobile-round-starting-countdown-screen
+    <the-press-button-screen
+      v-bind:player="player"
       v-if="state == 'round-starting'"/>
 
   </div>
@@ -44,14 +45,14 @@ import ThePlayerRoundInfoScreen from './components/remote/ThePlayerRoundInfoScre
 // Prompt user to let us know they're ready to play
 import TheReadyConfirmationScreen from './components/remote/TheReadyConfirmationScreen.vue';
 
-// Match countdown on the screen before round starts
-import TheMobileRoundStartingCountdownScreen from './components/remote/TheMobileRoundStartingCountdownScreen.vue';
+// Press button screen appears with disabled button until whole question and answers appear on display
+import ThePressButtonScreen from './components/remote/ThePressButtonScreen.vue';
 
 import { RemoteStore } from './RemoteStore'
 
 export default Vue.extend({
   name: 'AppRemote',
-  components: { TheMobileHomeScreen, TheEnterNameScreen, TheConnectionConfirmedScreen, ThePlayerRoundInfoScreen, TheReadyConfirmationScreen, TheMobileRoundStartingCountdownScreen  },
+  components: { TheMobileHomeScreen, TheEnterNameScreen, TheConnectionConfirmedScreen, ThePlayerRoundInfoScreen, TheReadyConfirmationScreen, ThePressButtonScreen },
   sockets: {
     ['teams-generated']: function(res) {
         RemoteStore.rounds.push(res.round)

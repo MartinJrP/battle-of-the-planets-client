@@ -21,6 +21,14 @@
       @countdown-ended="beingRound"
       v-if="state == 'begin-countdown'"/>
 
+<<<<<<< HEAD
+=======
+    <the-question-screen
+      v-if="state == 'question-started'"/>
+
+
+
+>>>>>>> Added more styling and deleted the countdown page on the remote
   </div>
 </template>
 
@@ -32,12 +40,13 @@ import TheGameSession from './components/display/TheGameSession.vue';
 import TheGeneratedTeamsScreen from './components/display/TheGeneratedTeamsScreen.vue';
 import RoundStartingScreen from './components/display/RoundStartingScreen.vue';
 import RoundStartingCountdownScreen from './components/display/RoundStartingCountdownScreen.vue';
+import TheQuestionScreen from './components/display/TheQuestionScreen.vue';
 
 import { mapState, mapMutations } from 'vuex';
 
 export default Vue.extend({
   name: 'app-display',
-  components: { TheHomeScreen, TheGameSession, TheGeneratedTeamsScreen, RoundStartingScreen, RoundStartingCountdownScreen },
+  components: { TheHomeScreen, TheGameSession, TheGeneratedTeamsScreen, RoundStartingScreen, RoundStartingCountdownScreen, TheQuestionScreen },
   sockets: {
     ['begin-round']: function() {
       this.state = 'begin-countdown'
