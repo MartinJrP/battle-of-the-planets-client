@@ -7,12 +7,14 @@
         <div class="opponents-container">
 
             <round-starting-player-card
-            v-bind:player="teamOnePlayer"/>
+                v-bind:player="teamOnePlayer"
+                v-bind:ready="playerOneReady"/>
 
             <p>VS</p>
 
             <round-starting-player-card
-            v-bind:player="teamTwoPlayer"/>
+                v-bind:player="teamTwoPlayer"
+                v-bind:ready="playerTwoReady"/>
 
         </div>
 
@@ -27,19 +29,22 @@ import { mapState, mapGetters } from 'vuex';
 export default Vue.extend({
     name: "RoundStartingScreen",
     components: { RoundStartingPlayerCard },
+    sockets: {
+        ['player-ready']: function(num){
+            this.ready = true;
+            if (this.teamOnePlayer.num === num) this.playerOneReady = true
+            if (this.teamTwoPlayer.num === num) this.playerTwoReady = true
+        }
+    },
+    data: function () {
+        return {
+            playerOneReady: false,
+            playerTwoReady: false
+        }
+    },
     computed: {
         ...mapState(['currentRoundNum']),
         ...mapGetters(['teamOnePlayer', 'teamTwoPlayer'])
-        
-        // teamOnePlayer: function(){
-        //     return this.$store.getters.teamOnePlayer
-        // },
-        // teamTwoPlayer: function(){
-        //     return this.$store.getters.teamTwoPlayer
-        // },
-        // currentRoundNum: function () {
-        //     return this.$store.state.currentRoundNum
-        // }
     }
 })
 </script>

@@ -61,9 +61,6 @@ export default Vue.extend({
 
         this.state = 'teams-generated'
     },
-    // ['player-updated']: function (player) {
-    //   RemoteStore.players.push(player)
-    // },
     ['prepare-to-play']: function () {
       this.state = 'ready-prompt'
     }
@@ -90,6 +87,7 @@ export default Vue.extend({
               vm.state = 'joined-game';
               vm.player = player
               RemoteStore.$data.currentPlayer = player
+              RemoteStore.sessionId = sessionId
               vm.sessionId = sessionId
               //alert('Joined Game. You\'re: ' + player.username)
           }

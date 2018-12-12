@@ -48,7 +48,10 @@ export default Vue.extend({
     },
     methods: {
         emitPlayerReadyEvent: function () {
-            this.$socket.emit('player-ready');
+            this.$socket.emit('player-ready', { 
+                sessionId: RemoteStore.sessionId, 
+                playerNum: RemoteStore.currentPlayer.num 
+            })
             this.state = 'ready-clicked'
         }
     }, 

@@ -17,7 +17,7 @@
 <script>
 export default {
 name: "RoundStartingPlayerCard",
-props: ['player'],
+props: ['player', 'ready'],
 computed: {
     baseUrl: function () {
         return process.env.BASE_URL
@@ -32,18 +32,7 @@ computed: {
     response: function () {
         return this.ready ? "READY TO PLAY" : "Waiting for response..."
     }
-},
-sockets: {
-    ['player-ready']: function(){
-        this.ready = true;
-    }
-},
-data: function(){
-    return {
-        ready:false
-    }
-}
-
+  }
 }
 </script>
 
