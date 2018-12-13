@@ -13,6 +13,7 @@
                     v-model="inputCode"
                     class="text-input" 
                     autofocus
+                    type="number"
                     placeholder="Game Code"/>
 
                 <button 
