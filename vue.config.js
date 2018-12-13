@@ -30,6 +30,6 @@ module.exports = {
     }
   },
   baseUrl: process.env.NODE_ENV === 'production'
-    ? ''
+    ? 'https://battle-of-the-planets.firebaseapp.com'
     : ''
 }

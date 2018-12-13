@@ -15,6 +15,7 @@ let connection = process.env.NODE_ENV === 'production' ?
 Vue.use(VueTypedJs)
 Vue.use(new VueSocketIO({
   debug: true,
+  debug: process.env.NODE_ENV != 'production',
   connection: connection,
   vuex: {
     store,

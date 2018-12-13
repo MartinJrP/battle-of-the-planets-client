@@ -8,19 +8,19 @@
   },
   "dependencies": {
     "@types/socket.io-client": "^1.4.32",
-    "socket.io-client": "^2.1.1",
-    "vue": "^2.5.17",
+    "socket.io-client": "^2.2.0",
+    "vue": "^2.5.21",
     "vue-socket.io": "^3.0.4",
     "vue-typed-js": "^0.1.2",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.5",
-    "@vue/cli-plugin-typescript": "^3.0.5",
-    "@vue/cli-service": "^3.0.5",
-    "node-sass": "^4.9.0",
+    "@vue/cli-plugin-babel": "^3.2.0",
+    "@vue/cli-plugin-typescript": "^3.2.0",
+    "@vue/cli-service": "^3.2.0",
+    "node-sass": "^4.11.0",
     "sass-loader": "^7.0.1",
-    "typescript": "^3.0.0",
-    "vue-template-compiler": "^2.5.17"
+    "typescript": "^3.2.2",
+    "vue-template-compiler": "^2.5.21"
   }
 }
