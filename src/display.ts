@@ -8,10 +8,14 @@ Vue.config.productionTip = false
 import VueSocketIO from 'vue-socket.io'
 import VueTypedJs from 'vue-typed-js'
 
+let connection = process.env.NODE_ENV === 'production' ?
+  'https://battle-of-the-planets.herokuapp.com' :
+  'http://localhost:8000'
+
 Vue.use(VueTypedJs)
 Vue.use(new VueSocketIO({
   debug: true,
-  connection: 'http://localhost:8000',
+  connection: connection,
   vuex: {
     store,
     actionPrefix: 'SOCKET_',
