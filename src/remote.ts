@@ -10,7 +10,7 @@ let connection = process.env.NODE_ENV === 'production' ?
 import VueSocketIO from 'vue-socket.io'
 
 Vue.use(new VueSocketIO({
-  debug: true,
+  debug: process.env.NODE_ENV != 'production',
   connection: connection
 }))
 
