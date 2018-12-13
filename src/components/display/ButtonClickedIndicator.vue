@@ -1,14 +1,16 @@
 <template>
     <div id="button-clicked-indicator">
-        <img
+
+        <!-- Come back to this after the break -->
+        <!-- <img
             v-bind:src="path" 
-            alt="Planet Avatar">
+            alt="Planet Avatar"> -->
 
         <p>Press the button on your screen to answer</p>
 
-        <img
+        <!-- <img
             v-bind:src="path" 
-            alt="Planet Avatar">
+            alt="Planet Avatar"> -->
     </div>
 </template>
 
