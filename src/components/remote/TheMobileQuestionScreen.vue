@@ -17,7 +17,7 @@
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
-    name: "TheMobileQuestionScreen.vue",
+    name: "TheMobileQuestionScreen",
     data: function() {
         return {
             options: ['A', 'B', 'C', 'D']
