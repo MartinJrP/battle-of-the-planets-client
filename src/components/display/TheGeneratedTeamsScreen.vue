@@ -47,10 +47,10 @@ export default Vue.extend({
         baseUrl: function () {
             return process.env.BASE_URL
         },
-        path: function () {
-            var path = `${this.baseUrl}img/planet-1.png`
-            return path
-        }
+        // path: function () {
+        //     var path = `${this.baseUrl}img/planet-1.png`
+        //     return path
+        // }
     }
 })
 </script>

@@ -18,10 +18,15 @@ export default {
         path: function () {
             let isProduction = process.env.NODE_ENV === 'production'
             let baseUrl = isProduction ? this.baseUrl : window.location.host + '/'
-            let protocol = isProduction ? 'https' : 'http'
-            var path = `${protocol}://${baseUrl}img/planet-${ this.player.num }.png`
+            let protocol = isProduction ? '' : 'http'
+            let path;
+            if (isProduction) {
+                path = `${baseUrl}img/planet-${ this.player.num }.png`
+            } else {
+                path = `http://${baseUrl}img/planet-${ this.player.num }.png`
+            }
             return path
-        }
+        } 
     }
 }
 </script>

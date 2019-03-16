@@ -22,10 +22,16 @@ export default {
             return process.env.BASE_URL
         },
         path: function () {
+            // https://battle-of-the-planets.firebaseapp.com/://https://battle-of-the-planets.firebaseapp.com/img/planet-1.png
             let isProduction = process.env.NODE_ENV === 'production'
             let baseUrl = isProduction ? this.baseUrl : window.location.host + '/'
-            let protocol = isProduction ? 'https' : 'http'
-            var path = `${protocol}://${baseUrl}img/planet-1.png`
+            let protocol = isProduction ? '' : 'http'
+            let path;
+            if (isProduction) {
+                path = `${baseUrl}img/planet-${ this.player.num }.png`
+            } else {
+                path = `http://${baseUrl}img/planet-${ this.player.num }.png`
+            }
             return path
         }
     }
