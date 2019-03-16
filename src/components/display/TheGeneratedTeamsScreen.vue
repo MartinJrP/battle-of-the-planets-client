@@ -40,8 +40,10 @@ export default Vue.extend({
     name: 'TheGeneratedTeamsScreen',
     components: { PlayerTableCell },
     computed: {
-        ...mapState(['rounds', 'players']),
-        
+        ...mapState(['players']),
+        rounds: function () {
+            return this.$store.state.rounds
+        },
         baseUrl: function () {
             return process.env.BASE_URL
         },

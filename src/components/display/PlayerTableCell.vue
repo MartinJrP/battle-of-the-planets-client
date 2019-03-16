@@ -29,16 +29,25 @@ computed: {
         let baseUrl = isProduction ? this.baseUrl : window.location.host + '/'
         let protocol = isProduction ? 'https' : 'http'
         let basePath = `${protocol}://${baseUrl}img/`
+
+        if (isProduction) {
+            basePath = `${baseUrl}img/`
+        } else {
+            basePath = `http://${baseUrl}img/planet-${ this.player.num }.png`
+        }
+
         return [
             basePath + 'planet-' + this.round.teamOnePlayerNum + '.png',
             basePath + 'planet-' + this.round.teamTwoPlayerNum + '.png',
         ]
     },
     teamOnePlayerNum: function () {
-        return this.players.find(player => player.num === this.round.teamOnePlayerNum).username
+        let num = this.round.teamOnePlayerNum
+        return this.players.find(player => player.num === num).username
     },
     teamTwoPlayerNum: function () {
-        return this.players.find(player => player.num === this.round.teamTwoPlayerNum).username
+        let num = this.round.teamTwoPlayerNum
+        return this.players.find(player => player.num === num).username
     }
 }
 

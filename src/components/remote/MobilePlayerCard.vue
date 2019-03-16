@@ -1,5 +1,5 @@
 <template>
-    <div id="mobile-player-card">
+    <div class="mobile-player-card">
         <img
             v-bind:src="path" 
             alt="Planet Avatar" 
@@ -22,8 +22,13 @@ export default Vue.extend({
         path: function () {
             let isProduction = process.env.NODE_ENV === 'production'
             let baseUrl = isProduction ? this.baseUrl : window.location.host + '/'
-            let protocol = isProduction ? 'https' : 'http'
-            var path = `${protocol}://${baseUrl}img/planet-${ this.player.num }.png`
+            let protocol = isProduction ? '' : 'http'
+            let path;
+            if (isProduction) {
+                path = `${baseUrl}img/planet-${ this.player.num }.png`
+            } else {
+                path = `http://${baseUrl}img/planet-${ this.player.num }.png`
+            }
             return path
         }
     }
@@ -33,7 +38,7 @@ export default Vue.extend({
 
 <style lang="scss">
 
-#mobile-player-card {
+.mobile-player-card {
     text-align: center;
 }
 
@@ -42,7 +47,7 @@ img {
     margin-bottom:0;
 }
 
-#mobile-player-card p {
+.mobile-player-card p {
     font-family: "Open Sans", sans-serif;
     font-size:24px;
     font-weight:700;
