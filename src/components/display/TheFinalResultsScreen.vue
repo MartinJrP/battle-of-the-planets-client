@@ -28,23 +28,31 @@ export default Vue.extend({
         background-repeat: no-repeat;
         background-position: center;
         height:100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        height:100vh;
+        width:100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin:0;
+        padding:96px 0px 64px 0px;
     }
 
     #the-final-results-screen h1 {
         color:#AE97F4;
         font-size:72px;
-        margin-top:80px;
     }
 
     #the-final-results-screen h3 {
         font-family: "Luckiest Guy", sans-serif;
-        font-size:64px;
-        margin-top:182px;
+        font-size:56px;
         text-transform: uppercase;
     }
 
     #the-final-results-screen button {
-        margin-top:120px;
     }
 
 </style>

@@ -18,7 +18,7 @@
       v-if="state == 'round-starting'"/>
 
     <round-starting-countdown-screen
-      @countdown-ended="beingRound"
+      @countdown-ended="beginRound"
       v-if="state == 'begin-countdown'"/>
 
     <the-question-screen
@@ -83,7 +83,7 @@ export default Vue.extend({
         })
       })
     },
-    beingRound: function () {
+    beginRound: function () {
       this.state = 'question-started'
     }
   }

@@ -1,10 +1,13 @@
 <template>
     <div id="the-question-screen">
-        <h1>Question #{{ questionNumber }}</h1>
 
-        <vue-typed-js :strings="[question.question]" @onComplete="beginAcceptingQuestions">
-            <p class="question typing"></p>
-        </vue-typed-js>
+        <div>
+            <h1>Question #{{ questionNumber }}</h1>
+
+            <vue-typed-js :strings="[question.question]" @onComplete="beginAcceptingQuestions">
+                <p class="question typing"></p>
+            </vue-typed-js>
+        </div>
 
         <div class="options-container" v-if="shouldShowOptions">
             <div class="option"
@@ -12,6 +15,10 @@
                 v-bind:key="index">
                 <p><span class="white-letter"> {{ index | asLetter }}.</span> {{ option }} </p>
             </div>
+
+        </div>
+
+        <div class="test">
 
         </div>
 
@@ -60,10 +67,17 @@ export default Vue.extend({
 
     #the-question-screen {
         text-align: center;
-    }
-
-    #the-question-screen h1 {
-        margin-top: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        height:100vh;
+        width:100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin:0;
+        padding:96px 0px 96px 0px;
     }
 
     .question {
@@ -78,7 +92,7 @@ export default Vue.extend({
     }
 
     .options-container {
-        width:838px;
+        width:858px;
         margin:32px auto 0px auto;
     }
 
@@ -93,7 +107,7 @@ export default Vue.extend({
     .option:nth-of-type(1n), 
     .answer:nth-of-type(1n),
     .answered-wrong:nth-of-type(1n) {
-        margin-right:16px;
+        margin-right:24px;
     }
 
     .option:nth-of-type(1n + 1),
@@ -154,6 +168,10 @@ export default Vue.extend({
         display:inline-block;
         border-radius:16px;
         opacity:0.5;
+    }
+
+    .test {
+        height: 184px;
     }
 
 

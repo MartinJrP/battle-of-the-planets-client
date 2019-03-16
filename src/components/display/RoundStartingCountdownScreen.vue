@@ -47,6 +47,10 @@ export default {
 
 <style lang="scss">
 
+#round-starting-countdown-screen .container {
+    padding:96px 0px 80px 0px;
+}
+
 #round-starting-countdown-screen h1 {
     font-size:72px;
 }

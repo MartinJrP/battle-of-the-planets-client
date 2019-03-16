@@ -60,18 +60,17 @@ export default Vue.extend({
 .generated-teams-container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     position: relative;
     height:100%;
     width:100%;
     margin:0;
-    padding:0;
+    padding:96px 0px 64px 0px;
 }
 
 .mainTitle-small {
     font-size:56px;
-    margin-top:80px;
 }
 
 table { 

@@ -1,8 +1,11 @@
 <template>
     <div id="round-starting-screen">
-        <h1>ROUND #{{ currentRoundNum }}</h1>
 
-        <h2>{{ currentQuestion.category }}</h2>
+        <div>
+            <h1>ROUND #{{ currentRoundNum }}</h1>
+            
+            <h2>{{ currentQuestion.category }}</h2>
+        </div>
 
         <div class="opponents-container">
 
@@ -15,6 +18,10 @@
             <round-starting-player-card
                 v-bind:player="teamTwoPlayer"
                 v-bind:ready="playerTwoReady"/>
+
+        </div>
+
+        <div class="test">
 
         </div>
 
@@ -53,6 +60,17 @@ export default Vue.extend({
 
 #round-starting-screen {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    height:100vh;
+    width:100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin:0;
+    padding:96px 0px 96px 0px;
 }
 
 #round-starting-screen h1 {
@@ -83,4 +101,9 @@ export default Vue.extend({
     font-size:64px;
     font-weight:700;
 }
+
+.test {
+    height:118px;
+}
+
 </style>

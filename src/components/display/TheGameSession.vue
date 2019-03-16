@@ -2,11 +2,15 @@
     <div id="the-game-session">
         <div class="game-code-container">
 
-            <h1>Battle of the Planets</h1>
+            <div>
 
-            <h2>Game Code</h2>
+                <h1>Battle of the Planets</h1>
 
-            <p class="game-code"> {{ code }} </p>
+                <h2>Game Code</h2>
+
+                <p class="game-code"> {{ code }} </p>
+
+            </div>
 
 
             <div class="players-container">
@@ -66,22 +70,17 @@ export default {
 .game-code-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   position: relative;
-  height:100%;
+  height:100vh;
   width:100%;
   margin:0;
-  padding:0;
+  padding:96px 0px 64px 0px;
 }
 
 .game-code-container h1 {
     font-size:72px;
-    margin: 80px auto 0px auto;
-}
-
-.game-code-container button {
-    margin-top:16px;
 }
 
 h2 {
@@ -89,28 +88,35 @@ h2 {
     font-family: "Poppins", sans-serif;
     font-weight:600;
     font-size:24px;
+    text-align: center;
 }
 
 .game-code {
+    width:280px;
     text-transform: uppercase;
     color:#522875;
-    padding:24px 80px 13px 80px;
+    padding:24px 64px 13px 64px;
     font-family: "Luckiest Guy", sans-serif;
     background-color:white;
     font-size:40px;
-    margin:8px 0px 0px 0px;
+    margin:8px auto 0px auto;
     border-radius: 20px;
+    text-align:center;
 }
 
 .players-container {
     width:836px;
     height:271px;
-    display: flex;
-    justify-content: space-evenly;
+    display:flex;
+    justify-content:start;
     align-items:flex-start;
     flex-direction: row;
     flex-wrap: wrap;
     margin:16px 0px;
+}
+
+.game-code-container button {
+    margin-top:16px;
 }
 
 

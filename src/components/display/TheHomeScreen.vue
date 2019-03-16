@@ -3,9 +3,17 @@
 
         <div class="container">
 
-            <h1>Battle of the Planets</h1>
+            <div>
 
-            <p class="description">Team up with your classmates and test your knowledge as you face head to head to see who is the superior planet of the galaxy.</p>
+                <h1>Battle of the Planets</h1>
+
+                <p class="description">Team up with your classmates and test your knowledge as you face head to head to see who is the superior planet of the galaxy.</p>
+
+            </div>
+
+            <div class="planets-facing-animation">
+
+            </div>
 
             <button class="main-button start-game-button" v-on:click="emitStartGameEvent">Start Game</button>
 
@@ -27,10 +35,15 @@ export default {
 
 <style lang="scss">
 #the-home-screen {
-    background-image: url("~@/assets/img/planets-home-bg.svg");
-    background-size:90%;
-    background-repeat: no-repeat;
-    background-position: center bottom;
+    height:100vh;
+    // background-image: url("~@/assets/img/planets-home-bg-alternative.svg");
+    // background-size:100%;
+    // background-repeat: no-repeat;
+    // background-position: center center;
+}
+
+.planets-background-image {
+    width:100vh;
 }
 
 .description {
@@ -47,19 +60,15 @@ export default {
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   position: relative;
-  height:100%;
+  height:100vh;
   width:100%;
   background-size: cover;
   background-repeat: no-repeat;
   margin:0;
-  padding:0;
-}
-
-.start-game-button {
-    margin:294px 0px 0px 0px;
+  padding:96px 0px 64px 0px;
 }
 
 </style>

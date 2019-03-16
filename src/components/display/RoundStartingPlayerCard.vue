@@ -48,6 +48,7 @@ computed: {
     display: inline-block;
     vertical-align: middle;
     padding:0;
+    width:390px;
 }
 
 #round-starting-player-card img {
