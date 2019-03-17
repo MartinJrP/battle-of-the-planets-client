@@ -52,6 +52,9 @@ export default Vue.extend({
     },
     ['prepare-to-play']: function(roundNum: number) {
       this.displayNextRound(roundNum)
+    },
+    ['end-game']: function() {
+      this.state = 'game-over'
     }
   },
   data: function () {

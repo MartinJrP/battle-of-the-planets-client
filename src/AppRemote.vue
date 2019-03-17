@@ -93,10 +93,17 @@ export default Vue.extend({
       this.state = 'round-starting'
     },
     ['player-can-respond']: function (teamNum) {
-      if (RemoteStore.currentPlayer.num === teamNum) {
+      if (RemoteStore.teamNumber === teamNum) {
         this.state = 'answering-question'
       } else {
         this.state = 'late-click'
+      }
+    },
+    ['can-steal']: function (incorrect) {
+      if (incorrect.team == RemoteStore.teamNumber) {
+        this.state = 'player-lost'
+      } else {
+        this.state = 'answering-question'
       }
     },
     ['round-end']: function (winner) {
