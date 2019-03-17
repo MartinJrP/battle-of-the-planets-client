@@ -3,7 +3,7 @@
     
     <div id="round-starting-countdown-screen">
         <div class="container">
-            <h1>ROUND #1 BEGINS IN . . .</h1>
+            <h1>ROUND #{{ currentRoundNum }} BEGINS IN . . .</h1>
 
             <p class="countdown">{{ counter }}</p>
 
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-
+import { mapState } from 'vuex';
 import ButtonClickedIndicator from './ButtonClickedIndicator.vue';
 
 export default {
@@ -25,6 +25,9 @@ export default {
             counter: 5,
             interval: undefined 
         }
+    },
+    computed: {
+        ...mapState(['currentRoundNum']),
     },
     methods: {
         decrementCounter: function () {

@@ -5,8 +5,10 @@
             <p>Which do you think is the answer?</p>
 
             <div class="option"
-            v-for="(option, index) in options"
-            v-bind:key="index"> 
+                v-for="(option, index) in options"
+                v-bind:key="index"
+                @click="answerQuestion(index)"> 
+
                 <span>{{ option }}</span>
             </div>
 
@@ -16,11 +18,24 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { RemoteStore } from '@/RemoteStore';
+
 export default Vue.extend({
     name: "TheMobileQuestionScreen",
     data: function() {
         return {
             options: ['A', 'B', 'C', 'D']
+        }
+    },
+    methods: {
+        answerQuestion: function (answerIndex: number) {
+            let data = {
+                sessionId: RemoteStore.sessionId, 
+                teamNum: RemoteStore.teamNumber, 
+                answerIndex: answerIndex
+            }
+            console.log(data)
+            this.$socket.emit('attempt-to-answer', data)
         }
     }
     

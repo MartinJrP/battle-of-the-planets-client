@@ -4,7 +4,7 @@
         <div>
             <h1>Question #{{ questionNumber }}</h1>
 
-            <vue-typed-js :strings="[question.question]" @onComplete="beginAcceptingQuestions">
+            <vue-typed-js :strings="[question.question]" :showCursor="false" @onComplete="beginAcceptingQuestions">
                 <p class="question typing"></p>
             </vue-typed-js>
         </div>

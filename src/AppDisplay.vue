@@ -49,6 +49,9 @@ export default Vue.extend({
   sockets: {
     ['begin-round']: function() {
       this.state = 'begin-countdown'
+    },
+    ['prepare-to-play']: function(roundNum: number) {
+      this.displayNextRound(roundNum)
     }
   },
   data: function () {
@@ -74,13 +77,17 @@ export default Vue.extend({
       })
     },
     prepareNextRound: function () {
+      let vm = this
       this.$socket.emit('prepare-next-round', this.sessionId, (roundNum: number) => {
-        this.$store.commit('setCurrentRoundNum', roundNum)
-        this.state = 'round-starting'
+        vm.displayNextRound(roundNum)
+      })
+    },
+    displayNextRound: function (roundNum: number) {
+      this.$store.commit('setCurrentRoundNum', roundNum)
+      this.state = 'round-starting'
 
-        this.$socket.emit('dispense-question', this.sessionId, (question: any) => {
-          this.$store.commit('setCurrentQuestion', question)
-        })
+      this.$socket.emit('dispense-question', this.sessionId, (question: any) => {
+        this.$store.commit('setCurrentQuestion', question)
       })
     },
     beginRound: function () {

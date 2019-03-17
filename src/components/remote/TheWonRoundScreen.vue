@@ -32,18 +32,18 @@ export default Vue.extend({
 
 <style lang="scss">
 
-    #the-lost-round-screen {
+    #the-won-round-screen {
         text-align: center;
     }
 
-    #the-lost-round-screen h1 {
+    #the-won-round-screen h1 {
         font-size:48px;
         color:#57D785;
         margin-top:64px;
         width:265px;
     }
 
-    #the-lost-round-screen .text {
+    #the-won-round-screen .text {
         font-family: "Open Sans", sans-serif;
         font-size:16px;
         margin:16px auto 48px auto;
