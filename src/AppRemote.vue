@@ -38,6 +38,10 @@
       v-bind:player="player"
       v-if="state == 'player-lost'"/>
 
+    <the-lost-round-screen
+      v-bind:player="player"
+      v-if="state == 'player-won'"/>
+
   </div>
 </template>
 
@@ -74,12 +78,14 @@ import TheAnswerResultScreen from './components/remote/TheAnswerResultScreen.vue
 // This screen shows when a user loses the round
 import TheLostRoundScreen from './components/remote/TheLostRoundScreen.vue';
 
+import TheWonRoundScreen from './components/remote/TheWonRoundScreen.vue';
+
 
 import { RemoteStore } from './RemoteStore'
 
 export default Vue.extend({
   name: 'AppRemote',
-  components: { TheMobileHomeScreen, TheEnterNameScreen, TheConnectionConfirmedScreen, ThePlayerRoundInfoScreen, TheReadyConfirmationScreen, ThePressButtonScreen, TheMobileQuestionScreen, TheTooLateScreen, TheAnswerResultScreen, TheLostRoundScreen },
+  components: { TheMobileHomeScreen, TheEnterNameScreen, TheConnectionConfirmedScreen, ThePlayerRoundInfoScreen, TheReadyConfirmationScreen, ThePressButtonScreen, TheMobileQuestionScreen, TheTooLateScreen, TheAnswerResultScreen, TheLostRoundScreen, TheWonRoundScreen },
   sockets: {
     ['teams-generated']: function(res) {
         RemoteStore.rounds.push(res.round)

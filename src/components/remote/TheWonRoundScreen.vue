@@ -1,12 +1,11 @@
 <template>
-    <div id="the-lost-round-screen">
-        <h1>INCORRECT</h1>
+    <div id="the-won-round-screen">
+        <h1>CORRECT!</h1>
 
-        <p class="text">But don’t worry, cheer on your team members and your team can still win!</p>
+        <p class="text">Congratulations! You just got your team 1 point.</p>
 
         <mobile-player-card
             v-bind:player="currentPlayer"></mobile-player-card>
-
     </div>
     
 </template>
@@ -18,7 +17,7 @@ import MobilePlayerCard from './MobilePlayerCard.vue';
 import { RemoteStore } from '@/RemoteStore'
 
 export default Vue.extend({
-    name: "TheLostRoundScreen",
+    name: "TheWonRoundScreen",
     components: { MobilePlayerCard },
     props: ["player"],
     computed: {
@@ -26,6 +25,7 @@ export default Vue.extend({
             return RemoteStore.$data.currentPlayer
         }
     }
+    
     
 })
 </script>
@@ -38,7 +38,7 @@ export default Vue.extend({
 
     #the-lost-round-screen h1 {
         font-size:48px;
-        color:#F54359;
+        color:#57D785;
         margin-top:64px;
         width:265px;
     }
