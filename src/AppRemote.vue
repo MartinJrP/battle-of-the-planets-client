@@ -1,5 +1,12 @@
 <template>
   <div id="app">
+
+    <div class="lost-connection-indicator">
+
+      <p>Disconnected</p>
+
+    </div>
+
     <the-mobile-home-screen
       v-if="state == 'welcome'"
       v-on:code-accepted="joinGame"/>
@@ -164,6 +171,20 @@ export default Vue.extend({
 @import './assets/scss/styles';
 
 @import url('https://fonts.googleapis.com/css?family=Luckiest+Guy|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');
+
+.lost-connection-indicator {
+  position: relative;
+  margin:0 auto;
+  text-align: center;
+  width:100%;
+  padding:8px 0px;
+  background-color:#F54359;
+}
+
+.lost-connection-indicator p {
+    font-family:"Open Sans", sans-serif;
+    font-size:16px;
+}
 
 html, body {
   height: 100vh;
