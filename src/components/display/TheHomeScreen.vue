@@ -36,46 +36,53 @@ export default {
 </script>
 
 <style lang="scss">
-#the-home-screen {
-    height:100vh;
-    overflow: hidden;
-}
 
-.planets-background {
-    width:90vw;
+    #the-home-screen {
+        height:100vh;
+        overflow: hidden;
+    }
+
+    .planets-background {
+        width:90vw;
+        height:100vh;
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-image: url("~@/assets/img/planets-home-bg.svg");
+        background-repeat: no-repeat;
+        background-position: center center;
+        z-index: 0;
+    }
+
+    .description {
+        position: relative;
+        font-family:"Open Sans", sans-serif;
+        color:white;
+        font-weight:400;
+        text-align: center;
+        line-height:36px;
+        margin:8px auto 0px auto;
+        width:730px;
+        font-size:24px;
+    }
+
+    .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
     height:100vh;
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-image: url("~@/assets/img/planets-home-bg.svg");
+    width:100%;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
-}
+    margin:0;
+    padding:96px 0px 64px 0px;
+    }
 
-.description {
-  font-family:"Open Sans", sans-serif;
-  color:white;
-  font-weight:400;
-  text-align: center;
-  line-height:36px;
-  margin:8px auto 0px auto;
-  width:730px;
-  font-size:24px;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  height:100vh;
-  width:100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  margin:0;
-  padding:96px 0px 64px 0px;
-}
+    .start-game-button {
+        position: relative;
+    }
 
 </style>

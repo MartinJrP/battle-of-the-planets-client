@@ -9,7 +9,12 @@
             <form 
             v-on:submit.prevent="emitUsername">
                 
-                <input class="text-input" placeholder="First Name" autofocus v-model="username">
+                <input 
+                class="text-input" 
+                placeholder="First Name"  
+                v-model="username"
+                autofocus
+                required>
 
                 <button class="mobile-main-button">Join Game</button>
 
