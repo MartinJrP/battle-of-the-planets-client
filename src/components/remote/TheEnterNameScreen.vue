@@ -32,6 +32,9 @@ export default {
             console.log("submitted")
             this.$emit('update-username', this.username)
             this.$emit('connection-confirmed');
+
+            // scroll back to top of screen
+            window.scrollTo(0,0);
         }
     }
 }
