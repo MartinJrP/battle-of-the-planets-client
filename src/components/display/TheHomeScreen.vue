@@ -11,13 +11,15 @@
 
             </div>
 
-            <div class="planets-facing-animation">
+            <div class="planets-background">
 
             </div>
 
             <button class="main-button start-game-button" v-on:click="emitStartGameEvent">Start Game</button>
 
         </div>
+
+
 
     </div>
 </template>
@@ -36,14 +38,19 @@ export default {
 <style lang="scss">
 #the-home-screen {
     height:100vh;
-    // background-image: url("~@/assets/img/planets-home-bg-alternative.svg");
-    // background-size:100%;
-    // background-repeat: no-repeat;
-    // background-position: center center;
+    overflow: hidden;
 }
 
-.planets-background-image {
-    width:100vh;
+.planets-background {
+    width:90vw;
+    height:100vh;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url("~@/assets/img/planets-home-bg.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 .description {
