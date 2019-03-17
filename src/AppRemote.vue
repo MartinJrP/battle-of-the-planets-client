@@ -1,10 +1,8 @@
 <template>
   <div id="app">
 
-    <div class="lost-connection-indicator">
-
+    <div class="lost-connection-indicator" v-if="isDisconnected">
       <p>Disconnected</p>
-
     </div>
 
     <the-mobile-home-screen
@@ -85,6 +83,12 @@ export default Vue.extend({
   name: 'AppRemote',
   components: { TheMobileHomeScreen, TheEnterNameScreen, TheConnectionConfirmedScreen, ThePlayerRoundInfoScreen, TheReadyConfirmationScreen, ThePressButtonScreen, TheMobileQuestionScreen, TheTooLateScreen, TheLostRoundScreen, TheWonRoundScreen },
   sockets: {
+    ['connect']: function () {
+      this.isDisconnected = false
+    },
+    ['disconnect']: function () {
+      this.isDisconnected = true
+    },
     ['teams-generated']: function(res) {
         RemoteStore.rounds.push(res.round)
         this.rounds.push(res.round)
@@ -126,6 +130,7 @@ export default Vue.extend({
       // change back to 'welcome'
       state: 'welcome',
       sessionId: '',
+      isDisconnected: false,
 
       // The current player
       player: {} as any,
@@ -172,6 +177,10 @@ export default Vue.extend({
 
 @import url('https://fonts.googleapis.com/css?family=Luckiest+Guy|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');
 
+body {
+  font-family:"Open Sans", sans-serif;
+}
+
 .lost-connection-indicator {
   position: relative;
   margin:0 auto;
@@ -179,11 +188,9 @@ export default Vue.extend({
   width:100%;
   padding:8px 0px;
   background-color:#F54359;
-}
-
-.lost-connection-indicator p {
-    font-family:"Open Sans", sans-serif;
+  p {
     font-size:16px;
+  }
 }
 
 html, body {
