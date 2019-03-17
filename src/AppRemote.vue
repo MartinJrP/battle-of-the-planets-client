@@ -30,6 +30,7 @@
       v-if="state == 'round-starting'"/>
 
     <the-mobile-question-screen
+      :incorrectAnswer="incorrectAnswer"
       v-if="state == 'answering-question'"/>
 
     <the-too-late-screen
@@ -114,6 +115,7 @@ export default Vue.extend({
       if (incorrect.team == RemoteStore.teamNumber) {
         this.state = 'player-lost'
       } else {
+        this.incorrectAnswer = incorrect.answer
         this.state = 'answering-question'
       }
     },
@@ -131,6 +133,7 @@ export default Vue.extend({
       state: 'welcome',
       sessionId: '',
       isDisconnected: false,
+      incorrectAnswer: null as any,
 
       // The current player
       player: {} as any,

@@ -25,6 +25,7 @@
       v-if="state == 'question-started'"/>
 
     <the-final-results-screen
+      :winningTeam="winningTeam"
       v-if="state == 'game-over'"/>
 
   </div>
@@ -53,7 +54,8 @@ export default Vue.extend({
     ['prepare-to-play']: function(roundNum: number) {
       this.displayNextRound(roundNum)
     },
-    ['end-game']: function() {
+    ['end-game']: function(winningTeam) {
+      this.winningTeam = winningTeam
       this.state = 'game-over'
     }
   },
@@ -61,6 +63,7 @@ export default Vue.extend({
     return {
       // change back to 'welcome'
       state: 'welcome',
+      winningTeam: null
     }
   },
   computed: {

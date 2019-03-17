@@ -3,7 +3,7 @@
 
         <h1>CONGRATULATIONS</h1>
 
-        <h3>Team 1 &#38; Team 2</h3>
+        <h3>{{ message }}</h3>
 
         <button class="main-button">Play Again</button>
 
@@ -14,8 +14,20 @@
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
-    name: "TheFinalResultsScreen"
-    
+    name: "TheFinalResultsScreen",
+    props: ['winningTeam'],
+    computed: {
+        message: function () {
+            switch (this.winningTeam) {
+                case -1:
+                return "It's a tie!"
+                case 1:
+                return "Team 1 Wins!"
+                case 2: 
+                return "Team 2 Wins!"
+            }
+        }
+    }
 })
 </script>
 

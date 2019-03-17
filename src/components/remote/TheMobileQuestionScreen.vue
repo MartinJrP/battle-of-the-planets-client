@@ -7,6 +7,7 @@
             <div class="option"
                 v-for="(option, index) in options"
                 v-bind:key="index"
+                :class="{ disabled: incorrectAnswer == index }"
                 @click="answerQuestion(index)"> 
 
                 <span>{{ option }}</span>
@@ -22,6 +23,7 @@ import { RemoteStore } from '@/RemoteStore';
 
 export default Vue.extend({
     name: "TheMobileQuestionScreen",
+    props: ['incorrectAnswer'],
     data: function() {
         return {
             options: ['A', 'B', 'C', 'D']
@@ -29,6 +31,8 @@ export default Vue.extend({
     },
     methods: {
         answerQuestion: function (answerIndex: number) {
+            if (answerIndex == this.incorrectAnswer) return
+
             let data = {
                 sessionId: RemoteStore.sessionId, 
                 teamNum: RemoteStore.teamNumber, 
@@ -60,6 +64,12 @@ export default Vue.extend({
         margin:16px 0px 24px 0px;
     }
 
+    .disabled {
+        opacity: 0.3;
+        background-color:#522875 !important;
+        color: #FFF !important;
+    }
+
     .option span, 
     .answered-wrong span {
         font-family: "Luckiest Guy", sans-serif;
@@ -75,7 +85,7 @@ export default Vue.extend({
         color:#522875;
     }
 
-    .option:active {
+    .option:not(.disabled):active {
         background-color:#522875;
         color:white;
     }
